@@ -108,7 +108,7 @@
     }
 
     function register_sns_backup_menu_page(){
-        add_menu_page( __('Backup', 'sns-backup'), __('Backup', 'sns-backup'), 'manage_options', 'backup-wordpress/sns-backup-admin.php', '', 'dashicons-backup', 76 );
+        add_menu_page( __('Backup', 'sns-backup'), __('Backup', 'sns-backup'), 'manage_options', SNS_BACKUP_ROOT_FOLDER_NAME.'/sns-backup-admin.php', '', 'dashicons-backup', 76 );
     }
 
     function my_style_loader_tag_function($tag){

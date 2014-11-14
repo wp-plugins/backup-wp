@@ -1,11 +1,12 @@
 <?php
     define( 'SNS_BACKUP_ROOT'   , plugin_dir_path( __FILE__ ) );
+    define( 'SNS_BACKUP_ROOT_FOLDER_NAME',  'backup-wp');
 
     define( 'SNS_CLASSES_PATH'  , SNS_BACKUP_ROOT.'classes/' );
-    define( 'SNS_BACKUPS_PATH'  , WP_CONTENT_DIR.'/backup-wordpress/' );
-    define( 'SNS_BACKUPS_URL'   , content_url( '/backup-wordpress/' ) );
+    define( 'SNS_BACKUPS_PATH'  , WP_CONTENT_DIR.'/'.SNS_BACKUP_ROOT_FOLDER_NAME.'/' );
+    define( 'SNS_BACKUPS_URL'   , content_url( '/'.SNS_BACKUP_ROOT_FOLDER_NAME.'/' ) );
 
-    define( 'SNS_BACKUP_URL'    , plugins_url( 'backup-wordpress' ) );
+    define( 'SNS_BACKUP_URL'    , plugins_url( SNS_BACKUP_ROOT_FOLDER_NAME ) );
     define( 'SNS_CSS_URL'       , SNS_BACKUP_URL.'/css' );
     define( 'SNS_JS_URL'        , SNS_BACKUP_URL.'/js' );
 
