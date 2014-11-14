@@ -1,14 +1,14 @@
 === Backup ===
 Contributors: Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
-Tags: backup, backup wordpress, sql, mysql, database, Wordpress backup, backup wordpress, zip, gzip, google, back up, file, database backup, mysql backup, dump, db backup, website backup, backup plugin, dropbox backup, google drive, ftp backup, ftp, full backup, backups, scp, duplicate, email, migrate, restoration, restore,
+Tags: backup, backup wordpress, sql, mysql, database, Wordpress backup, backup wordpress, zip, gzip, google, back up, file, database backup, mysql backup, dump, db backup, website backup, backup plugin, dropbox backup, google drive, ftp backup, ftp, full backup, backups, scp, duplicate, email, migrate, restoration, restore, automatic, automated, wp backup, remote, restore, restore, upload, time, storage,
 Requires at least: 3.0.1
 Tested up to: 4.0
 Stable tag: 2.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Fully functional FREE WordPress backup ​and rollback ​​tool which helps you​ incredibly easely create fully ​customized ​and optimized ​backups of your WordPress ​based ​web site.
+Fully functional FREE WordPress backup and rollback ​​tool which helps you​ to create fully ​customized ​backups of your WordPress site.
 
 == Description ==
 
@@ -16,7 +16,7 @@ Fully functional FREE WordPress backup ​and rollback ​​tool which helps yo
 
 MAKE SURE YOUR FILES & DATABASE ARE SAFE. ROLLBACK YOUR DATA WHENEVER NEEDED.
 
-" Backup " plugin is a fully functional FREE Wordpress backup and rollback tool which helps you manually/automatically create customized and optimized backups of your WordPress based website.  
+Backup plugin is a fully functional FREE Wordpress backup and rollback tool which helps you manually/automatically create customized and optimized backups of your WordPress based website.  
 
 The extension allows you to backup your files, themes, plugins & database safely in different locations to ensure more data security.
 
@@ -24,7 +24,7 @@ The auto schedule option helps you automatically create backups in regular inter
 
 Also Wordpress Backup works in background not in the browser mode which reduces the pain of waiting even for large databases which can take a while to backup.
 
-"Wordpress Backup " provides
+Wordpress Backup provides
 
 * Incredibly easy and fast manual backup creation
 * Easy one click restoration either from history records or backup files
@@ -64,39 +64,39 @@ Also Wordpress Backup works in background not in the browser mode which reduces 
 
 To Backup your Wordpress web site you should follow this - Backup 
 
-* Select an option called " Backup " from the sidebar of Wordpress admin panel
-* Go to "Manual Backup " section
-* Click on " Backup " button
+* Select an option called "Backup" from the sidebar of Wordpress admin panel
+* Go to "Manual Backup" section
+* Click on "Backup" button
 * Waite a little bit to finish backup process
-* You are done! You can download it from the " Backup history" section.
+* You are done! You can download it from the "Backup history" section.
 
 
 ### How to restore using history records or backup file - Backup ?
 
 To restore your backup you should follow this - Backup 
 
-* Go to " Backup history & restore"  section
-* Either upload your backup file or restore from the history records.
-* Wait a little bit to complete the restoration
-* You are done!
+* Go to "Backup history & restore"  section - Wordpress Backup
+* Either upload your backup file or restore from the history records - Wordpress Backup.
+* Wait a little bit to complete the restoration - Wordpress Backup
+* You are done - Wordpress Backup!
 
 
 ### How to configure the scheduler - Backup ?
 
 To schedule your backup creation you should follow this - Backup 
 
-* Go to "Schedule" section
-* Enable scheduling
-* Set your preferences
-* Click on "Save" button
-* You are done! Scheduler will automatically backup your web site.
+* Go to "Schedule" section - Wordpress Backup
+* Enable scheduling - Wordpress Backup
+* Set your preferences - Wordpress Backup
+* Click on "Save" button - Wordpress Backup
+* You are done! Scheduler will automatically backup your web site - Wordpress Backup.
 
 
 ### How to create a customized backups - Backup ?
 
 To customize your backups you should follow this - Backup 
 
-* Go to "Advance Options" section
-* Set your preferences
-* Click on "Save" button
-* You are done!
+* Go to "Advance Options" section - Wordpress Backup
+* Set your preferences - Wordpress Backup
+* Click on "Save" button - Wordpress Backup
+* You are done - Wordpress Backup!
