@@ -33,7 +33,9 @@ Wordpress Backup provides
 * Get notified through the whole process
 * Emergency support
 
-### If you found an issue or bug in WordPress Backup plugin feel free to contact us here [support@sygnoos.com](mailto:support@sygnoos.com).
+### If you think, that you found a bug in our [WordPress Backup](http://sygnoos.com/wpbackup/) plugin or have any question contact us at [support@sygnoos.com](mailto:support@sygnoos.com).
+
+Wordpress Backup
 
 == Installation ==
 
