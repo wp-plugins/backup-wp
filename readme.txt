@@ -1,7 +1,7 @@
 === Backup ===
 Contributors: Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
-Tags: backup, backup wordpress, sql, mysql, database, Wordpress backup, backup wordpress, zip, gzip, google, back up, file, database backup, mysql backup, dump, db backup, website backup, backup plugin, dropbox backup, google drive, ftp backup, ftp, full backup, backups, scp, duplicate, email, migrate, restoration, restore, automatic, automated, wp backup, remote, restore, restore, upload, time, storage,
+Tags: backup, backup wordpress, sql, mysql, database, Wordpress backup, backup wordpress, zip, gzip, google, back up, file, database backup, mysql backup, dump, db backup, website backup, backup plugin, dropbox backup, google drive, ftp backup, ftp, full backup, backups, scp, duplicate, email, migrate, restoration, restore, automatic, automated, wp backup, remote, restore, restore, upload, time, storage, admin,
 Requires at least: 3.0.1
 Tested up to: 4.0
 Stable tag: 2.6.1
