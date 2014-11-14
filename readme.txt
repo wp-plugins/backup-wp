@@ -58,6 +58,8 @@ Also Wordpress Backup works in background not in the browser mode which reduces 
 = 2.6.1 =
 *  Add Wordpress Backup plugin.
 	
+==Adding a Backup==
+
 ### How to create a backup - Backup ?
 
 To Backup your Wordpress web site you should follow this - Backup 
