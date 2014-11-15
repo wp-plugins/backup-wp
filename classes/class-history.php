@@ -169,28 +169,17 @@
 
         }
 
-        public static function send_restore_email( $succeed ){
-
-            $userEmail = Settings::get_email();
-            if( $succeed ){
-                wp_mail($userEmail , __('Restore of your Wordpress site!', 'sns-backup') , __('Your Wordpress site was successfully restored!', 'sns-backup'));
-            }else{
-                wp_mail($userEmail , __('Restore of your Wordpress site!', 'sns-backup') , __('Your Wordpress site restoration failed!', 'sns-backup'));
-            }
-
-        }
-
         public static function draw( $only_records = false ){
             $history = self::get_history();
             if( !$only_records ){
 ?>
-            <span class="menu-title"><?php _e( 'Your Backup History' ); ?></span>
+            <span class="menu-title"><?php _e( 'Your Backup History', 'sns-backup' ); ?></span>
             <div class="menu-content">
                 <div class="external-restore">
-                    <input type="text" placeholder="<?php _e('Browse a backup file to restore from.'); ?>" class="form-control external-backup-input">
+                    <input type="text" placeholder="<?php _e('Browse a backup file to restore from.', 'sns-backup'); ?>" class="form-control external-backup-input">
                     <div id="external-container">
-                        <button id="external-browse" type="button" class="btn btn-default"><?php _e( 'Browse' ); ?></button>
-                        <button id="external-restore" type="button" class="btn btn-primary"><?php _e( 'Restore' ); ?></button>
+                        <button id="external-browse" type="button" class="btn btn-default"><?php _e( 'Browse', 'sns-backup' ); ?></button>
+                        <button id="external-restore" type="button" class="btn btn-primary"><?php _e( 'Restore', 'sns-backup' ); ?></button>
                     </div>
                 </div>
                 <div class="separator"></div>
@@ -199,13 +188,13 @@
                 <table class="table">
                     <?php
                         if( empty( $history ) ){
-                            _e( 'Your history is empty' );
+                            _e( 'Your history is empty', 'sns-backup' );
                         }else{
                     ?>
                             <thead>
-                                <th class="h-date"><?php _e( 'Backup date' ); ?></th>
-                                <th><?php _e( 'Options' ); ?></th>
-                                <th class="h-actions"><?php _e( 'Actions' ); ?></th>
+                                <th class="h-date"><?php _e( 'Backup date', 'sns-backup' ); ?></th>
+                                <th><?php _e( 'Options', 'sns-backup' ); ?></th>
+                                <th class="h-actions"><?php _e( 'Actions', 'sns-backup' ); ?></th>
                             </thead>
                             <tbody>
                     <?php
@@ -216,12 +205,12 @@
                                  <td>
                                      <?php
                                         $info = json_decode( $item->info , true );
-                                        echo implode(', ' , $info['options']);
+                                        echo $info['options'];
                                      ?>
                                  </td>
                                  <td>
-                                     <button type="button" class="btn btn-primary btn-restore" data-backup_id="<?php echo $item->id; ?>"><?php _e( 'Restore' ); ?></button>
-                                     <a href="<?php echo SNS_BACKUPS_URL.'sns_backup-'.$item->hash.'.tar'; ?>"><button type="button" class="btn btn-default btn-download" data-backup_id="<?php echo $item->id; ?>"><?php _e( 'Download' ); ?></button></a>
+                                     <button type="button" class="btn btn-primary btn-restore" data-backup_id="<?php echo $item->id; ?>"><?php _e( 'Restore', 'sns-backup' ); ?></button>
+                                     <a href="<?php echo SNS_BACKUPS_URL.'sns_backup-'.$item->hash.'.tar'; ?>"><button type="button" class="btn btn-default btn-download" data-backup_id="<?php echo $item->id; ?>"><?php _e( 'Download', 'sns-backup' ); ?></button></a>
                                      <button type="button" class="btn btn-danger btn-delete" data-backup_id="<?php echo $item->id; ?>"><span class="glyphicon glyphicon-remove"></span></button>
                                  </td>
                              </tr>

@@ -1,35 +1,24 @@
 <?php
     require_once(dirname(__FILE__).'/../sns-config.php');
     require_once(SNS_CLASSES_PATH.'class-backup.php');
-    require_once(SNS_CLASSES_PATH.'class-settings.php');
 
     class Manual {
 
-        public static function backup( $locations ){
+        public static function backup(){
 
-            Settings::save_locations( $locations );
             $backup = new Sns_Backup('manual');
             return $backup->backup();
-        }
-
-        public static function get_locations(){
-
-            global $wpdb;
-            $table = SNS_DB_PREFIX.'settings';
-            $config = $wpdb->get_results( "SELECT `name`, `data` , `manual_status` AS `status` FROM {$table}" , OBJECT_K );
-            return $config;
-
         }
 
         public static function draw(){
 
 ?>
-            <span class="menu-title"><?php _e( 'Backup destination' ); ?></span>
+            <span class="menu-title"><?php _e( 'Backup destination', 'sns-backup' ); ?></span>
             <div class="menu-content">
                 <form class="manual-form" autocomplete="off" role="form" action="">
-                    <?php Helper::locations( self::get_locations() ); ?>
+                    <?php Helper::locations(); ?>
                     <div class="separator"></div>
-                    <button type="submit" class="btn btn-primary"><?php _e( 'Backup' ); ?></button>
+                    <button type="submit" class="btn btn-primary"><?php _e( 'Backup', 'sns-backup' ); ?></button>
                 </form>
             </div>
 <?php

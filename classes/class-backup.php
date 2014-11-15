@@ -5,7 +5,7 @@
 
     class Sns_Backup {
 
-        private $type; //manual or schedule
+        private $type;
         private $hash;
 
         public function __construct( $type ){
@@ -14,81 +14,37 @@
 
         public function backup(){
 
-            $options = Option::get_options();
             $backupItems = array();
-            self::configureCount( $options[Option::COUNT]->value );
-            if( $options[Option::WP_CONTENT]->value == Option::SET ){
-                $backupItems[Option::WP_CONTENT] = WP_CONTENT_DIR;
-            }else{
-                if( $options[Option::PLUGINS]->value == Option::SET ){
-                    $backupItems[Option::PLUGINS] = WP_PLUGIN_DIR;
-                }
-                if( $options[Option::THEMES]->value == Option::SET ){
-                    $backupItems[Option::THEMES] = get_theme_root();
-                }
-            }
-            if( $options[Option::DB]->value == Option::SET ){
-                $backupItems[Option::DB] = Option::SET;
-            }
+            self::configureCount();
 
-            $settings = Settings::get_settings( $this->type );
-            $userEmail = null;
-            if( isset( $settings[Settings::SETTINGS_EMAIL] ) ){
-                $data = json_decode( $settings[Settings::SETTINGS_EMAIL]->data , true );
-                $userEmail = $data['email'];
-            }
+            $backupItems[Option::WP_CONTENT] = WP_CONTENT_DIR;
+            $backupItems[Option::DB] = Option::SET;
 
             if( $this->backup_items( $backupItems ) ){
-                if( !is_null( $userEmail ) ){
-                    $backup_file = SNS_BACKUPS_PATH.'sns_backup-'.$this->hash.'.tar';
-
-                    $file_size = filesize( $backup_file );
-                    if( $file_size !== false && $file_size < SNS_EMAIL_FILE_MAX_SIZE ){
-                        wp_mail($userEmail , __('Backup of your Wordpress site!', 'sns-backup') , __('Your backup is ready. Attached you can find the backup file.', 'sns-backup') , '' , $backup_file);
-                    }else{
-                        $link = SNS_BACKUPS_URL.'sns_backup-'.$this->hash.'.tar';
-                        wp_mail($userEmail , __('Backup of your Wordpress site!', 'sns-backup') , __('Your backup is ready. You can download it <a href="'.$link.'">here</a>') ,  'Content-type: text/html', 'sns-backup' );
-                    }
-                }
                 return true;
-            }
-            if( !is_null( $userEmail ) ){
-                wp_mail($userEmail , __('Backup of your Wordpress site!', 'sns-backup') , __('Your backup couldn’t be created!', 'sns-backup'));
             }
             return false;
 
         }
 
-        public static function configureCount( $count ){
+        public static function configureCount(){
             global $wpdb;
             $table = SNS_DB_PREFIX.'backups';
             $backups = $wpdb->get_results( "SELECT
-                                                COUNT(*) as `count`
-                                           FROM {$table}
-                                           LIMIT 1"
+                                                `id`,
+                                                `hash`
+                                            FROM {$table}
+                                            LIMIT 1"
             );
-            $backup_cnt = intval($backups[0]->count);
-
-            if( $backup_cnt >= $count ){
-                $limit = $backup_cnt - $count + 1;
-                $backups = $wpdb->get_results( "SELECT
-                                                    `id`,
-                                                    `hash`
-                                                FROM {$table}
-                                                ORDER BY `backup_date` ASC
-                                                LIMIT {$limit}"
+            if( !empty( $backups ) ){
+                $backup = $backups[0];
+                $wpdb->query(
+                    "   DELETE FROM {$table}
+                        WHERE `id` = {$backup->id}
+                    "
                 );
-                foreach( $backups as $backup ){
-                    $wpdb->query(
-                        "   DELETE FROM {$table}
-                            WHERE `id` = {$backup->id}
-                        "
-                    );
-                    @unlink(SNS_BACKUPS_PATH.'sns_backup-'.$backup->hash.'.tar');
-                }
-
+                @unlink(SNS_BACKUPS_PATH.'sns_backup-'.$backup->hash.'.tar');
             }
-
 
         }
 
@@ -130,8 +86,6 @@
 
                 $this->hash = $hash;
                 $this->save();
-
-                Settings::get_settings( $this->type );
 
                 return true;
             }
@@ -188,21 +142,9 @@
 
             global $wpdb;
             $table_name = SNS_DB_PREFIX.'backups';
-            $options = Option::get_options( true );
-            $option_list = array();
-            foreach( $options as $option => $data ){
-                if( $option == Option::FULL ){
-                    $option_list = array(
-                        $option
-                    );
-                    break;
-                }
-                if( $option != Option::COUNT  ){
-                    $option_list []= $option;
-                }
-            }
+
             $info = json_encode( array(
-                'options' => $option_list
+                'options' => Option::FULL
             ) );
             $wpdb->insert(
                 $table_name,
@@ -213,15 +155,6 @@
                     'hash' => $this->hash
                 )
             );
-
-        }
-
-        public static function get_locations(){
-
-            global $wpdb;
-            $table = SNS_DB_PREFIX.'settings';
-            $config = $wpdb->get_results( "SELECT `name`, `manual_status` AS `status` FROM {$table}" , OBJECT_K );
-            return $config;
 
         }
 
@@ -239,8 +172,6 @@
                 $myisam = strpos( $create, 'MyISAM' );
 
                 if( $table == SNS_DB_PREFIX.'backups'  ||
-                    $table == SNS_DB_PREFIX.'settings'  ||
-                    $table == SNS_DB_PREFIX.'schedule_config'  ||
                     $table == SNS_DB_PREFIX.'options' ||
                     $table == $wpdb->prefix.'options' ||
                     $table == $wpdb->prefix.'terms' ||
@@ -306,8 +237,6 @@
                 foreach ( $tables as $db_item ) {
                     $table = current( $db_item );
                     if( $table == SNS_DB_PREFIX.'backups'  ||
-                        $table == SNS_DB_PREFIX.'settings'  ||
-                        $table == SNS_DB_PREFIX.'schedule_config'  ||
                         $table == SNS_DB_PREFIX.'options' ||
                         $table == $wpdb->prefix.'options' ||
                         $table == $wpdb->prefix.'terms' ||
