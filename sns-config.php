@@ -10,7 +10,7 @@
     define( 'SNS_CSS_URL'       , SNS_BACKUP_URL.'/css' );
     define( 'SNS_JS_URL'        , SNS_BACKUP_URL.'/js' );
 
-    define( 'SNS_PRO_URL' , 'http://wpbackup.sygnoos.com' );
+    define( 'SNS_PRO_URL' , 'http://sygnoos.com/wpbackup/' );
 
     define( 'SNS_EMAIL_FILE_MAX_SIZE' , 18*1024*1024 ); // 18Mb
 
