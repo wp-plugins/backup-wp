@@ -24,14 +24,18 @@ The auto schedule option helps you automatically create backups in regular inter
 
 Also Wordpress Backup works in background not in the browser mode which reduces the pain of waiting even for large databases which can take a while to backup.
 
-Wordpress Backup provides
+Wordpress Backup provides - Wordpress Backup
 
-* Incredibly easy and fast manual backup creation
-* Easy one click restoration either from history records or backup files
-* Backup automatization
-* Backup options customization & optimization
-* Get notified through the whole process
-* Emergency support
+* Incredibly easy and fast manual backup creation - Wordpress Backup
+* Easy one click restoration either from history records or backup files - Wordpress Backup
+* Backup automatization - Wordpress Backup
+* Backup options customization & optimization - Wordpress Backup
+* Get notified through the whole process - Wordpress Backup
+* Emergency support - Wordpress Backup
+
+The Wordpress backup plugin is a good choice for big websites that contain both a lot of data in both files and database. You can always keep backups of you Wordpress site in safe places.
+The idea came to our mind after losing thousands of files, so we thought, why don't create a backup plugin which can help us to backup and restore easily our Wordpress sites? So we created this plugin and we hope that you will enjoy it.
+After you are done, you can be sure that your files are safe and whenever needed you can restore all the data back, using the Wordpress backup plugin.
 
 ### If you think, that you found a bug in our [WordPress Backup](http://sygnoos.com/wpbackup/) plugin or have any question contact us at [support@sygnoos.com](mailto:support@sygnoos.com).
 
@@ -61,6 +65,8 @@ Wordpress Backup
 *  Add Wordpress Backup plugin.
 	
 ==Adding a Backup==
+
+### Wordpress Backup
 
 ### How to create a backup - Backup ?
 
