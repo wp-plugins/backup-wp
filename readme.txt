@@ -108,3 +108,7 @@ To customize your backups you should follow this - Backup
 * Set your preferences - Wordpress Backup
 * Click on "Save" button - Wordpress Backup
 * You are done - Wordpress Backup!
+
+After you are done, you can be sure that your files are safe and whenever needed you can restore all the data back, using the Wordpress backup plugin.
+
+### Wordpress Backup
