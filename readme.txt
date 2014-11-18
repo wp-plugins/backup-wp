@@ -16,9 +16,9 @@ Fully functional FREE WordPress backup and rollback ​​tool which helps you�
 
 MAKE SURE YOUR FILES & DATABASE ARE SAFE. ROLLBACK YOUR DATA WHENEVER NEEDED.
 
-Backup plugin is a fully functional FREE Wordpress backup and rollback tool which helps you manually/automatically create customized and optimized backups of your WordPress based website.  
+Wordpress Backup is a fully functional FREE Wordpress backup and rollback tool which helps you manually/automatically create customized and optimized backups of your WordPress based website.  
 
-The extension allows you to backup your files, themes, plugins & database safely in different locations to ensure more data security.
+The Wordpress Backup plugin allows you to backup your files, themes, plugins & database safely in different locations to ensure more data security.
 
 The auto schedule option helps you automatically create backups in regular interval as set by you in preferences (like daily, weekly and monthly). Scheduled backups will help you to do the job without any of your interactions and always maintain your website running in emergency situations. Of course you'll get notified through the whole process. 
 
@@ -34,8 +34,12 @@ Wordpress Backup provides - Wordpress Backup
 * Emergency support - Wordpress Backup
 
 The Wordpress backup plugin is a good choice for big websites that contain both a lot of data in both files and database. You can always keep backups of you Wordpress site in safe places.
-The idea came to our mind after losing thousands of files, so we thought, why don't create a backup plugin which can help us to backup and restore easily our Wordpress sites? So we created this plugin and we hope that you will enjoy it.
+The idea came to our mind after losing thousands of files, so we thought, why don't create a Wordpress backup plugin which can help us to backup and restore easily our Wordpress sites? So we created a Wordpress backup plugin and we hope that you will enjoy it.
 After you are done, you can be sure that your files are safe and whenever needed you can restore all the data back, using the Wordpress backup plugin.
+
+This Wordpress backup plugin is different from all the other backup plugins because it is very easy to use, thanks to its simple user interface.
+
+We are working everyday on new improvements and features. Soon we'll have very useful features which together with the existing features will provide you a unique Wordpress backup and restoration plugin.
 
 ### If you think, that you found a bug in our [WordPress Backup](http://sygnoos.com/wpbackup/) plugin or have any question contact us at [support@sygnoos.com](mailto:support@sygnoos.com).
 
@@ -72,11 +76,11 @@ Wordpress Backup
 
 To Backup your Wordpress web site you should follow this - Backup 
 
-* Select an option called "Backup" from the sidebar of Wordpress admin panel
-* Go to "Manual Backup" section
-* Click on "Backup" button
-* Waite a little bit to finish backup process
-* You are done! You can download it from the "Backup history" section.
+* Select an option called " Backup " from the sidebar of Wordpress admin panel - Backup 
+* Go to "Manual Backup " section - Backup 
+* Click on " Backup " button - Backup 
+* Waite a little bit to finish backup process - Backup 
+* You are done! You can download it from the "Backup history" section. - Backup 
 
 
 ### How to restore using history records or backup file - Backup ?
