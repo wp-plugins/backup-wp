@@ -14,6 +14,8 @@ Fully functional FREE WordPress backup and rollback ​​tool which helps you�
 
 ### Wordpress Backup
 
+* [Buy Wordpress Backup plugin](http://sygnoos.com/wpbackup/)
+
 MAKE SURE YOUR FILES & DATABASE ARE SAFE. ROLLBACK YOUR DATA WHENEVER NEEDED.
 
 Wordpress Backup is a fully functional FREE Wordpress backup and rollback tool which helps you manually/automatically create customized and optimized backups of your WordPress based website.  
