@@ -1,7 +1,7 @@
 === Backup ===
 Contributors: Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
-Tags: backup, backup wordpress, mysql, database, Wordpress backup, back up, database backup, mysql backup, dump, db backup, website backup, backup plugin, full backup, backups, duplicate, email, migrate, restoration, restore, automatic, automated, wp backup, restore,
+Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated,
 Requires at least: 3.0.1
 Tested up to: 4.0
 Stable tag: 2.6.1
