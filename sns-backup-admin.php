@@ -8,7 +8,7 @@
 <div class="bootstrap-wrapper">
     <div id="backup-main-block">
         <span class="head-title"><?php _e('Backup', 'sns-backup'); ?></span>
-        <a target="_blank" href="<?php echo SNS_PRO_URL; ?>" class="btn btn-warning btn-default" style="float: right; margin: -25px 0 0 10px;"><?php _e('Upgrade to PRO version', 'sns-backup'); ?></a>
+        <a target="_blank" href="<?php echo SNS_PRO_URL; ?>" class="btn btn-warning btn-default btn-upgrade"><?php _e('Upgrade to PRO version', 'sns-backup'); ?></a>
         <div id="backup-main-content">
             <div id="menu-tabs" class="menu-block">
                 <div class="menu-container">

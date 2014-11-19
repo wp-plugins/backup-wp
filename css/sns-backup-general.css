@@ -170,3 +170,14 @@
 #backup-main-block .control-label {
     margin-top: 7px;
 }
+
+.btn-upgrade{
+    float: right !important;
+    margin: -25px 0 0 10px !important;
+    background: #FF8000 !important;
+    background-image: -webkit-linear-gradient(top, #FF8000, #FF2A00) !important;
+    background-image: -moz-linear-gradient(top, #FF8000, #FF2A00) !important;
+    background-image: -ms-linear-gradient(top, #FF8000, #FF2A00) !important;
+    background-image: -o-linear-gradient(top, #FF8000, #FF2A00) !important;
+    background-image: linear-gradient(to bottom, #FF8000, #FF2A00) !important;
+}
