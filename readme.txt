@@ -82,9 +82,9 @@ Wordpress backup is a unique in it's context. It's fully functional and incredib
 Weekly backups are the best option for you. Wordpress backup provides a scheduler which will care everything for you automatically based on your preferences (daily, weekly, monthly).
 
 
-**How can I upgrade to PRO version?**
+**How can I upgrade to Backup PRO version?**
 
-Our pro version available [here](http://sygnoos.com/wpbackup/). You can choose any plan which the best fits your needs.
+Order our Wordress Backup Pro version [here](http://sygnoos.com/wpbackup/). You can choose any plan which the best fits your needs.
  
 	
 == Changelog ==
