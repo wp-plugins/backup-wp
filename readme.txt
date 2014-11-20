@@ -64,6 +64,28 @@ Wordpress Backup
 2.  WordPress Backup “Backup history & restore” page
 3.  WordPress Backup “Schedule” page
 4.  WordPress Backup “Advance options” page
+
+== Frequently Asked Questions ==
+
+
+**Why I need to backup my site?**
+
+Thousands of web sites are being hacked every day. Sometimes we think, that putting strong passwords are enough to ensure good security, but unfortunately that's a required but not enough. Be sure, if you are a target of hackers, they will find a workaround to hack your site. Sometimes we add new records or delete files that explodes something. Creating regular backups is the best way to keep the site up and working. And Wordpress Backup plugin is here to help you to figure out raised problems quickly and easy in emergency situations and keep your your service up and working.
+
+**Why should I choose this backup plugin?**
+
+Wordpress backup is a unique in it's context. It's fully functional and incredibly simple for usage. Of course we provide PRO payed version with enlarged set of features, but our FREE version provides the whole basic functionality without limitations too.
+ 
+
+**How often should I create a backup?**
+
+Weekly backups are the best option for you. Wordpress backup provides a scheduler which will care everything for you automatically based on your preferences (daily, weekly, monthly).
+
+
+**How can I upgrade to PRO version?**
+
+Our pro version available [here](http://sygnoos.com/wpbackup/). You can choose any plan which the best fits your needs.
+ 
 	
 == Changelog ==
 
