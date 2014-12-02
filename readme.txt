@@ -1,5 +1,5 @@
 === Backup ===
-Contributors: Sygnoos, Backup By Sygnoos
+Contributors: Backup By Sygnoos, Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
 Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup,
 Requires at least: 3.0.1
