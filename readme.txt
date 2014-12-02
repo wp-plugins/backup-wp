@@ -1,7 +1,7 @@
 === Backup ===
 Contributors: Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
-Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated,
+Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup,
 Requires at least: 3.0.1
 Tested up to: 4.0
 Stable tag: 2.6.1
@@ -18,30 +18,20 @@ Fully functional FREE WordPress backup and rollback ​​tool which helps you�
 
 MAKE SURE YOUR FILES & DATABASE ARE SAFE. ROLLBACK YOUR DATA WHENEVER NEEDED.
 
-Wordpress Backup is a fully functional FREE Wordpress backup and rollback tool which helps you manually/automatically create customized and optimized backups of your WordPress based website.  
+The WordPress Backup works perfectly to create a customizable backup of your WordPress site. When you use the WordPress Backup, you are guaranteed that your data is always safe, and when needed can be restored in its original form, at the time of your choice.  WordPress Backup allows you to either manually or automatically create a customized or fully optimized backup of a website  which has been built using WordPress.
+ WordPress is the premier content management system used globally to design websites and blogs, a large percentage of websites and blogs in the world are based on WordPress – which makes it all the more important to have a perfect system for backing up the data stored in files and databases used in a WordPress site, which can be easily restored at a later point of time. The WordPress Backup plugin is just perfect for this purpose as it backs up all the files, plugins, themes and databases on your WordPress website in different locations – which provides an extra data security.
 
-The Wordpress Backup plugin allows you to backup your files, themes, plugins & database safely in different locations to ensure more data security.
+Wordpress Backup provides
 
-The auto schedule option helps you automatically create backups in regular interval as set by you in preferences (like daily, weekly and monthly). Scheduled backups will help you to do the job without any of your interactions and always maintain your website running in emergency situations. Of course you'll get notified through the whole process. 
+* Backup your Wordpress Website or Blog - WordPress Backup* Worpress Backup works in the background, rather than in the browser mode – This means you don’t have to stop all other work waiting for large databases to get backed up. - WordPress Backup* Backup can be used for manual backup of the data, and is surprisingly fast and easy. - WordPress Backup* Backup restores all the backup files, including the history records using a highly intuitive one click restoration. - WordPress Backup* Automatization of the data backup is easy with WordPress Backup. - WordPress Backup* You can also customize and optimize your backup using this nifty plugin. - WordPress Backup* WordPress Backup keeps you constantly notified about the whole process, so that you know exactly what’s happening and what to expect. - WordPress Backup* You may trust WordPress Backup to support you in an emergency, such as hacking of the website or data theft. - WordPress Backup* The WordPress Backup has a very user friendly interface, which makes using it a pleasant and hassle free experience. - WordPress Backup* The auto schedule option that Backup comes with allows you to schedule backups at regular intervals. You won’t have to do much as the whole process is fully automatic and runs in the background, and notifies you about every development. - WordPress Backup
 
-Also Wordpress Backup works in background not in the browser mode which reduces the pain of waiting even for large databases which can take a while to backup.
+While the internet has transformed the lives hundreds of millions of people around the world, made it easier for them to shop, seek information, meet friends, communicate and work, it is an unfortunate fact that the internet is also the playground of hackers. It is believed that tens of thousands of websites get hacked every day. Yes, a strong password is an effective barrier, but not effective enough.
+ Hackers these days are highly sophisticated and they are capable of finding their way around most of the firewalls built by you around your website data. So many owners of WordPress websites have complained about losing precious data to hacking, which often results in the crashing of their websites. The only way to remain secure is to create regular backup of your site, to ensure that when a problem arises, the site can be quickly restored and a semblance of normalcy is restored.  
+This is what the WordPress Backup plugin does  - it offers an effective solution that helps you deal with an emergency situation, find quick and easy answers to your problems and get your website up and running in no time at all.  When you use the WordPress Backup, you’ve effectively created an insurance for yourself against the worst that the most capable hackers of the world can do to you.
 
-Wordpress Backup provides - Wordpress Backup
+One of the biggest issues webmasters and website developers have is backing up the data present in the files and the database. This is because a typical website requires the creation of thousands of files and these files have to be saved at regular intervals of time. Often because of a hardware malfunction or a software crash, some or many of the files get lost – this would be about disastrous consequences for the website owners, besides laying to waste months and even years of hard work, this would effectively waste a fortune spent on the creation of the voluminous amount of data. Eventually, losing the precious data would sound the death knell for the website, over which so much blood, sweat and tears have been shed by the webmaster and his team of website developers. This is why you need to backup the website data.
 
-* Incredibly easy and fast manual backup creation - Wordpress Backup
-* Easy one click restoration either from history records or backup files - Wordpress Backup
-* Backup automatization - Wordpress Backup
-* Backup options customization & optimization - Wordpress Backup
-* Get notified through the whole process - Wordpress Backup
-* Emergency support - Wordpress Backup
-
-The Wordpress backup plugin is a good choice for big websites that contain both a lot of data in both files and database. You can always keep backups of you Wordpress site in safe places.
-The idea came to our mind after losing thousands of files, so we thought, why don't create a Wordpress backup plugin which can help us to backup and restore easily our Wordpress sites? So we created a Wordpress backup plugin and we hope that you will enjoy it.
-After you are done, you can be sure that your files are safe and whenever needed you can restore all the data back, using the Wordpress backup plugin.
-
-This Wordpress backup plugin is different from all the other backup plugins because it is very easy to use, thanks to its simple user interface.
-
-We are working everyday on new improvements and features. Soon we'll have very useful features which together with the existing features will provide you a unique Wordpress backup and restoration plugin.
+The WordPress Backup plugin is unique and highly effective for backing up your WordPress website. Its simple user interface has an intuitive feel to it, making the whole backup process a child’s play for you – which makes it so much better than the other backup plugins available in the market.
 
 ### If you think, that you found a bug in our [WordPress Backup](http://sygnoos.com/wpbackup/) plugin or have any question contact us at [support@sygnoos.com](mailto:support@sygnoos.com).
 
