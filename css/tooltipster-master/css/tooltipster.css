@@ -1,8 +1,8 @@
 /* This is the default Tooltipster theme (feel free to modify or duplicate and create multiple themes!): */
 .tooltipster-default {
 	border-radius: 5px; 
-	border: 2px solid #eea236;
-	background: #f0ad4e;
+	border: 2px solid #ff5600;
+	background: #ff5600;
 	color: #fff;
     margin-top:15px;
 }

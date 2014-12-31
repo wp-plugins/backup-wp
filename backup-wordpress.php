@@ -3,11 +3,12 @@
  * Plugin Name: Backup
  * Plugin URI: http://sygnoos.com/wpbackup/
  * Description: Fully functional FREE Wordpress backup plugin which helps you to create manually/automatically custo​m​ized backups of your Wordpress based web site.
- * Version: 2.6.1
+ * Version: 2.7
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
  * License: GPLv2
  */
+    @set_time_limit(0);
 
     require_once( dirname(__FILE__).'/sns-config.php');
     require_once( SNS_BACKUP_ROOT.'/db-configuration.php');

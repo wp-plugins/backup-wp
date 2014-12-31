@@ -12,7 +12,12 @@
             </div>
             <div class="form-group checkbox-containter">
                 <label class="checkbox-inline  sns-tooltip">
-                    <input name="locations[email]" disabled="disabled" class="settings-email" type="checkbox" value="1"> <?php _e( 'Email (send notifications)' , 'sns-backup'); ?>
+                    <input disabled="disabled" type="checkbox"> <?php _e( 'FTP' , 'sns-backup'); ?>
+                </label>
+            </div>
+            <div class="form-group checkbox-containter">
+                <label class="checkbox-inline  sns-tooltip">
+                    <input disabled="disabled" type="checkbox"> <?php _e( 'Dropbox' , 'sns-backup'); ?>
                 </label>
             </div>
 <?php
