@@ -12,7 +12,7 @@ Fully functional FREE WordPress backup and rollback tool which helps you to crea
 
 == Description ==
 
-### Wordpress Backup
+#### Wordpress Backup
 
 * [Buy Wordpress Backup plugin](http://sygnoos.com/wpbackup/)
 
@@ -55,7 +55,7 @@ Wordpress Backup
 
 Installation - Wordpress Backup:
 
-### First download the ZIP file Wordpress Backup ,
+### First download the ZIP file Wordpress Backup
 
 Step 1. Download plugin
 
@@ -100,8 +100,8 @@ Order our Wordress Backup Pro version [here](http://sygnoos.com/wpbackup/). You 
 = 2.6.1 =
 *  Add Wordpress Backup plugin.
 = 2.7 =
-* Bug fixes
-* Features added
+* Bug fixes.
+* Features added.
 
 ==Adding a Backup==
 
