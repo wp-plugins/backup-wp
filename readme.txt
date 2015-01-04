@@ -12,7 +12,7 @@ Fully functional FREE WordPress backup and rollback tool which helps you to crea
 
 == Description ==
 
-<h4>Wordpress Backup</h4>
+#### Wordpress Backup
 
 * [Buy Wordpress Backup plugin](http://sygnoos.com/wpbackup/)
 
