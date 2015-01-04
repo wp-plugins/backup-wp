@@ -12,7 +12,7 @@ Fully functional FREE WordPress backup and rollback tool which helps you to crea
 
 == Description ==
 
-#### Wordpress Backup
+<h4>Wordpress Backup</h4>
 
 * [Buy Wordpress Backup plugin](http://sygnoos.com/wpbackup/)
 
@@ -29,7 +29,7 @@ Wordpress Backup provides
 * Backup can be used for manual backup of the data, and is surprisingly fast and easy. - WordPress Backup
 * Backup restores all the backup files, including the history records using a highly intuitive one click restoration. - WordPress Backup
 * Backup stores the backups on your Dropbox account. - WordPress Backup
-* Backup stores the backups on your DTP server. - WordPress Backup
+* Backup stores the backups on your FTP server. - WordPress Backup
 * Automatization of the data backup is easy with WordPress Backup. - WordPress Backup
 * You can also customize and optimize your backup using this nifty plugin. - WordPress Backup
 * WordPress Backup keeps you constantly notified about the whole process, so that you know exactly what's happening and what to expect. - WordPress Backup
