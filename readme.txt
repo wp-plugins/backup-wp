@@ -1,14 +1,14 @@
 === Backup ===
 Contributors: Backup By Sygnoos, Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
-Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up,
+Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup,
 Requires at least: 3.0.1
 Tested up to: 4.1
 Stable tag: 2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Fully functional FREE WordPress backup and rollback tool which helps you to create fully customized backups of your WordPress site.
+The BEST FREE backup and restoration plugin for WordPress. Create manual or scheduled fully customized backups on FTP, Dropbox ...
 
 == Description ==
 
@@ -24,18 +24,18 @@ WordPress is the premier content management system used globally to design websi
 
 Wordpress Backup provides
 
-* Backup your Wordpress Website or Blog - WordPress Backup
-* Worpress Backup works in the background, rather than in the browser mode - This means you don't have to stop all other work waiting for large databases to get backed up. - WordPress Backup
-* Backup can be used for manual backup of the data, and is surprisingly fast and easy. - WordPress Backup
-* Backup restores all the backup files, including the history records using a highly intuitive one click restoration. - WordPress Backup
-* Backup stores the backups on your Dropbox account. - WordPress Backup
-* Backup stores the backups on your FTP server. - WordPress Backup
-* Automatization of the data backup is easy with WordPress Backup. - WordPress Backup
-* You can also customize and optimize your backup using this nifty plugin. - WordPress Backup
-* WordPress Backup keeps you constantly notified about the whole process, so that you know exactly what's happening and what to expect. - WordPress Backup
-* You may trust WordPress Backup to support you in an emergency, such as hacking of the website or data theft. - WordPress Backup
-* The WordPress Backup has a very user friendly interface, which makes using it a pleasant and hassle free experience. - WordPress Backup
-* The auto schedule option that Backup comes with allows you to schedule backups at regular intervals. You wont have to do much as the whole process is fully automatic and runs in the background, and notifies you about every development. - WordPress Backup
+* Backup your Wordpress Website or Blog - ( WordPress Backup F1 )
+* Worpress Backup works in the background, rather than in the browser mode - This means you don't have to stop all other work waiting for large databases to get backed up - ( WordPress Backup F2 )
+* Backup can be used for manual backup of the data, and is surprisingly fast and easy - ( WordPress Backup F3 )
+* Backup restores all the backup files, including the history records using a highly intuitive one click restoration - ( WordPress Backup F4 )
+* Backup stores the backups on your Dropbox account - ( WordPress Backup F5 )
+* Backup stores the backups on your FTP server - ( WordPress Backup F6 )
+* Automatization of the data backup is easy with WordPress Backup - ( WordPress Backup F7 )
+* You can also customize and optimize your backup using this nifty plugin - ( WordPress Backup F8 )
+* WordPress Backup keeps you constantly notified about the whole process, so that you know exactly what's happening and what to expect - ( WordPress Backup F9 )
+* You may trust WordPress Backup to support you in an emergency, such as hacking of the website or data theft - ( WordPress Backup F10 )
+* The WordPress Backup has a very user friendly interface, which makes using it a pleasant and hassle free experience - ( WordPress Backup F11 )
+* The auto schedule option that Backup comes with allows you to schedule backups at regular intervals. You wont have to do much as the whole process is fully automatic and runs in the background, and notifies you about every development - ( WordPress Backup F12 )
 
 While the internet has transformed the lives hundreds of millions of people around the world, made it easier for them to shop, seek information, meet friends, communicate and work, it is an unfortunate fact that the internet is also the playground of hackers. It is believed that tens of thousands of websites get hacked every day. Yes, a strong password is an effective barrier, but not effective enough.
 
@@ -53,13 +53,12 @@ Wordpress Backup
 
 == Installation ==
 
-Installation - Wordpress Backup:
+### Wordpress Backup Installation
 
-### First download the ZIP file Wordpress Backup
+* Step 1. Download plugin [here](http://sygnoos.com/wpbackup/).
+* Step 2. Upload backup-wp.zip to /wp-content/plugins/ or use standard Wordpress plugins installer.
 
-Step 1. Download plugin
-
-Step 2. Upload backup-wp.zip to /wp-content/plugins/ or use standard Wordpress plugins installer.
+The detailed information you can find in our [user manual](http://sygnoos.com/wpbackup/WP_Backup_User_Manual_Guide.pdf).
 
 You are done! Now you can backup your web site or setup scheduler which will automatically care for you.
 
@@ -103,7 +102,7 @@ Order our Wordress Backup Pro version [here](http://sygnoos.com/wpbackup/). You 
 * Bug fixes.
 * Features added.
 
-==Adding a Backup==
+==Backup Instructions==
 
 ###Installation
 
