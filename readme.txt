@@ -4,7 +4,7 @@ Donate link: http://sygnoos.com/wpbackup/
 Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup, full backup, transfer, save, security, 
 Requires at least: 3.4
 Tested up to: 4.1
-Stable tag: 2.7.1
+Stable tag: 2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,8 +105,6 @@ Order our Wordress Backup Pro version [here](http://sygnoos.com/wpbackup/). You 
 = 2.7 =
 * Bug fixes.
 * Features added.
-= 2.7.1 =
-* Bug fixes.
 * Feature improvements.
 
 ==Backup Instructions==
