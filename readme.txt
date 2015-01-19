@@ -1,10 +1,10 @@
 === Backup ===
 Contributors: Backup By Sygnoos, Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
-Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup,
-Requires at least: 3.0.1
+Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup, full backup, transfer, save, security, 
+Requires at least: 3.4
 Tested up to: 4.1
-Stable tag: 2.7
+Stable tag: 2.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,10 @@ One of the biggest issues webmasters and website developers have is backing up t
 The WordPress Backup plugin is unique and highly effective for backing up your WordPress website. Its simple user interface has an intuitive feel to it, making the whole backup process a child's play for you - which makes it so much better than the other backup plugins available in the market.
 
 ### If you think, that you found a bug in our [WordPress Backup](http://sygnoos.com/wpbackup/) plugin or have any question contact us at [support@sygnoos.com](mailto:support@sygnoos.com).
+
+### Environment Requirments
+* Wordpress >= 3.4
+* PHP >= 5.4 (PHP >= 5.3 you can find [here](http://sygnoos.com/wpbackup/) )
 
 Wordpress Backup
 
@@ -101,6 +105,9 @@ Order our Wordress Backup Pro version [here](http://sygnoos.com/wpbackup/). You 
 = 2.7 =
 * Bug fixes.
 * Features added.
+= 2.7.1 =
+* Bug fixes.
+* Feature improvements.
 
 ==Backup Instructions==
 
