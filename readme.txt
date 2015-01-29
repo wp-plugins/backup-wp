@@ -14,9 +14,11 @@ The BEST FREE backup and restoration plugin for WordPress. Create manual or sche
 
 #### Wordpress Backup
 
-* [Buy Wordpress Backup plugin](http://sygnoos.com/wpbackup/)
+* [Get WordPress Backup PRO package](http://sygnoos.com/wpbackup/)
 
 MAKE SURE YOUR FILES & DATABASE ARE SAFE. ROLLBACK YOUR DATA WHENEVER NEEDED.
+
+https://www.youtube.com/watch?v=TyYEI0Bm24c
 
 The WordPress Backup works perfectly to create a customizable backup of your WordPress site. When you use the WordPress Backup, you are guaranteed that your data is always safe, and when needed can be restored in its original form, at the time of your choice.  WordPress Backup allows you to either manually or automatically create a customized or fully optimized backup of a website  which has been built using WordPress.
 
@@ -47,11 +49,11 @@ One of the biggest issues webmasters and website developers have is backing up t
 
 The WordPress Backup plugin is unique and highly effective for backing up your WordPress website. Its simple user interface has an intuitive feel to it, making the whole backup process a child's play for you - which makes it so much better than the other backup plugins available in the market.
 
-### If you think, that you found a bug in our [WordPress Backup](http://sygnoos.com/wpbackup/) plugin or have any question contact us at [support@sygnoos.com](mailto:support@sygnoos.com).
-
 ### Environment Requirments
 * Wordpress >= 3.4
 * PHP >= 5.4 (PHP >= 5.3 you can find [here](http://sygnoos.com/wpbackup/) )
+
+### If you think, that you found a bug in our [WordPress Backup](http://sygnoos.com/wpbackup/) plugin or have any question contact us at [support@sygnoos.com](mailto:support@sygnoos.com).
 
 Wordpress Backup
 
