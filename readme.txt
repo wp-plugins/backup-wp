@@ -53,7 +53,7 @@ The WordPress Backup plugin is unique and highly effective for backing up your W
 * Wordpress >= 3.4
 * PHP >= 5.4 (PHP >= 5.3 you can find [here](http://sygnoos.com/wpbackup/))
 
-### If you think, that you found a bug in our [WordPress Backup](http://sygnoos.com/wpbackup/) plugin or have any question contact us at [support@sygnoos.com](mailto:support@sygnoos.com).
+### If you think, that you found a bug in our <a href="http://sygnoos.com/wpbackup/">WordPress Backup</a> plugin or have any question contact us at <a href="mailto:support@sygnoos.com">support@sygnoos.com</a>.
 
 Wordpress Backup
 
