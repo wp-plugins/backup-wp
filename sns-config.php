@@ -1,9 +1,11 @@
 <?php
+
+    define( 'SNS_DS'   , DIRECTORY_SEPARATOR );
     define( 'SNS_BACKUP_ROOT'   , plugin_dir_path( __FILE__ ) );
     define( 'SNS_BACKUP_ROOT_FOLDER_NAME',  'backup-wp');
 
-    define( 'SNS_CLASSES_PATH'  , SNS_BACKUP_ROOT.'classes/' );
-    define( 'SNS_BACKUPS_PATH'  , WP_CONTENT_DIR.'/'.SNS_BACKUP_ROOT_FOLDER_NAME.'/' );
+    define( 'SNS_CLASSES_PATH'  , SNS_BACKUP_ROOT.'classes'.SNS_DS );
+    define( 'SNS_BACKUPS_PATH'  , WP_CONTENT_DIR.SNS_DS.SNS_BACKUP_ROOT_FOLDER_NAME.SNS_DS );
     define( 'SNS_BACKUPS_URL'   , content_url( '/'.SNS_BACKUP_ROOT_FOLDER_NAME.'/' ) );
 
     define( 'SNS_BACKUPS_MAX_COUNT'   , 1 );
@@ -25,7 +27,6 @@
     define( 'SNS_LOG_END' , 'end' );
 
     define( 'SNS_PROCESS_DURATION' , 10*60*1000 );// ms
-//    define( 'SNS_PROCESS_DURATION' , 15*60*1000 );// ms
     define( 'SNS_PROCESS_STEP_COUNT' , 1000 );
 
     global $wpdb;

@@ -64,7 +64,7 @@
             $options = Sns_Option::get_locations();
 
             foreach( $options as $option => $to ){
-                $item = ( $option == Sns_Option::DB )?($backup_dir.'/wp_dump.sql'):($backup_dir.'/'.$option.'.tar');
+                $item = ( $option == Sns_Option::DB )?($backup_dir.SNS_DS.'wp_dump.sql'):($backup_dir.SNS_DS.$option.'.tar');
                 if( is_file( $item ) ){
                     if( $option == Sns_Option::DB ){
                         Sns_Log::log_action('Restoring database');
@@ -87,7 +87,7 @@
             if( is_dir( $restore_path ) ){
                 self::delete_dir( $restore_path , array(
                     realpath( SNS_BACKUP_ROOT ) ,
-                    realpath( WP_CONTENT_DIR.'/debug.log' ),
+                    realpath( WP_CONTENT_DIR.SNS_DS.'debug.log' ),
                     realpath( SNS_BACKUPS_PATH )
                 ) );
             }

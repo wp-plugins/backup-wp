@@ -25,9 +25,9 @@
         public static function get_locations(){
             return array(
                 self::DB => '',
-                self::PLUGINS => WP_PLUGIN_DIR.'/',
-                self::THEMES => get_theme_root().'/',
-                self::WP_CONTENT => WP_CONTENT_DIR.'/'
+                self::PLUGINS => WP_PLUGIN_DIR.SNS_DS,
+                self::THEMES => get_theme_root().SNS_DS,
+                self::WP_CONTENT => WP_CONTENT_DIR.SNS_DS
             );
         }
 

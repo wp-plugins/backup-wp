@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Backup
  * Plugin URI: http://sygnoos.com/wpbackup/
- * Description: Fully functional FREE Wordpress backup plugin which helps you to create manually/automatically custo​m​ized backups of your Wordpress based web site.
+ * Description: The BEST FREE backup and restoration plugin for WordPress. Create manual or scheduled fully customized backups on FTP, Dropbox ...
  * Version: 2.7
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
@@ -11,7 +11,7 @@
 
     set_time_limit(0);
 
-    require_once( dirname(__FILE__).'/sns-config.php');
+    require_once( dirname(__FILE__).DIRECTORY_SEPARATOR.'sns-config.php');
     function sns_autoloader( $class ){
         if( strpos( $class , 'Sns_' ) !== false ){
             if( strpos( $class , 'Sns_Exception' ) !== false && $class != 'Sns_Exception_Handler' ){
@@ -32,9 +32,9 @@
     require_once(SNS_BACKUP_ROOT.'request-handler.php');
     require_once(SNS_BACKUP_ROOT.'db-configuration.php');
 
+    register_activation_hook( __FILE__, 'sns_configure_backups_store' );
     register_activation_hook( __FILE__, 'sns_configure_backup_db' );
     register_activation_hook( __FILE__, 'sns_configure_backup_db_data' );
-    register_activation_hook( __FILE__, 'sns_configure_backups_store' );
 
     register_deactivation_hook( __FILE__, 'sns_backup_deactivate' );
 
@@ -61,12 +61,15 @@
         if ( version_compare(PHP_VERSION, '5.4.0', '<') ) {
             wp_die('PHP >=5.4.0 version required.');
         }
+        if( !extension_loaded('Phar') || !class_exists('PharData') ){
+            wp_die('PHP Phar extension is not loaded.');
+        }
     }
 
     function sns_configure_backups_store(){
         if( !is_dir( SNS_BACKUPS_PATH ) ){
             if( !mkdir( SNS_BACKUPS_PATH ) ){
-                trigger_error('Cannot create folder '.SNS_BACKUPS_PATH, E_USER_ERROR);
+                wp_die('Cannot create folder '.SNS_BACKUPS_PATH);
             }
         }
     }
@@ -83,15 +86,15 @@
         //drop sns backup plugins tables
         global $wpdb;
         $table = SNS_DB_PREFIX.'settings_destinations';
-        $wpdb->query( "DROP TABLE `{$table}`" );
+        $wpdb->query( "DROP TABLE IF EXISTS `{$table}`" );
         $table = SNS_DB_PREFIX.'backups';
-        $wpdb->query( "DROP TABLE `{$table}`" );
+        $wpdb->query( "DROP TABLE IF EXISTS `{$table}`" );
         $table = SNS_DB_PREFIX.'options';
-        $wpdb->query( "DROP TABLE `{$table}`" );
+        $wpdb->query( "DROP TABLE IF EXISTS `{$table}`" );
         $table = SNS_DB_PREFIX.'settings_ftp';
-        $wpdb->query( "DROP TABLE `{$table}`" );
+        $wpdb->query( "DROP TABLE IF EXISTS `{$table}`" );
         $table = SNS_DB_PREFIX.'state';
-        $wpdb->query( "DROP TABLE `{$table}`" );
+        $wpdb->query( "DROP TABLE IF EXISTS `{$table}`" );
 
         //delete backup files
         if( is_dir( SNS_BACKUPS_PATH ) ){

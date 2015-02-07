@@ -38,8 +38,6 @@
             if( isset( $data['start_date'] ) ){
                 $query .= " ,`start_date` = '{$data['start_date']}' ";
             }
-            if( $wpdb->query( $query ) === false ){
-                throw new Sns_Exception_DB_Error( $query );
-            }
+            $wpdb->query( $query );
         }
     }

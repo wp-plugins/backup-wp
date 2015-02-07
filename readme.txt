@@ -1,7 +1,7 @@
 === Backup ===
 Contributors: Backup By Sygnoos, Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
-Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup, full backup, transfer, save, security, 
+Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup, full backup, transfer, save, security, swift, webdav backup,
 Requires at least: 3.4
 Tested up to: 4.1
 Stable tag: 2.7
@@ -49,7 +49,7 @@ One of the biggest issues webmasters and website developers have is backing up t
 
 The WordPress Backup plugin is unique and highly effective for backing up your WordPress website. Its simple user interface has an intuitive feel to it, making the whole backup process a child's play for you - which makes it so much better than the other backup plugins available in the market.
 
-### Environment Requirments
+### Environment Requirements
 * Wordpress >= 3.4
 * PHP >= 5.4 (PHP >= 5.3 you can find [here](http://sygnoos.com/wpbackup/))
 
@@ -97,7 +97,7 @@ Weekly backups are the best option for you. Wordpress backup provides a schedule
 
 **How can I upgrade to Backup PRO version?**
 
-Order our Wordress Backup Pro version [here](http://sygnoos.com/wpbackup/). You can choose any plan which the best fits your needs.
+Order our WordPress Backup Pro version [here](http://sygnoos.com/wpbackup/). You can choose any plan which the best fits your needs.
 
 
 == Changelog ==
@@ -152,7 +152,7 @@ BE VERY CAREFUL!!! If you have already created backups only on your local server
 ###Uninstallation
 
 NOTE:
-BE VERY CAREYFUL!!! If you have already created backups only on your local server, they will be deleted while you are trying to uninstall the current working version. Download them or store somewhere else before plugin uninstallation.
+BE VERY CAREFULL!!! If you have already created backups only on your local server, they will be deleted while you are trying to uninstall the current working version. Download them or store somewhere else before plugin uninstallation.
 
 * Choose “Plugins” tab from the sidebar menu ( Backup step 1 )
 * Find “Backup” plugin in the plugins table ( Backup step 2 )
@@ -213,7 +213,7 @@ If you need to configure scheduler that will automatically create backups for yo
 * Navigate to “Schedule” section ( Backup step 1 )
 * Mark scheduler as enabled ( Backup step 2 )
 * Chose how often you want to create backups ( Backup step 3 )
-* Choose the external destinations where you whish the backup files to be stored too ( Backup step 4 )
+* Choose the external destinations where you wish the backup files to be stored too ( Backup step 4 )
 * Finally push “Save” button ( Backup step 5 )
 * YOU ARE DONE!
 

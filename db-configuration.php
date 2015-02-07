@@ -1,5 +1,5 @@
 <?php
-    require_once( dirname(__FILE__).'/sns-config.php' );
+    require_once( dirname(__FILE__).DIRECTORY_SEPARATOR.'sns-config.php' );
 
     global $sns_backup_db_version;
     $sns_backup_db_version = '1.0';

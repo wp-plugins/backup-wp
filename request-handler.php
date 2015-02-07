@@ -1,6 +1,6 @@
 <?php
 
-    require_once( dirname(__FILE__).'/sns-config.php' );
+    require_once( dirname(__FILE__).DIRECTORY_SEPARATOR.'sns-config.php' );
 
     Sns_Error_Handler::init();
     Sns_Exception_Handler::init();
@@ -140,7 +140,7 @@
                     $backup_file = $_FILES['backup_file'];
                     $extension = substr( basename($backup_file['name']) , -4 );
                     if( $extension == '.tar' ){
-                        $file_dir = dirname(__FILE__).'/sns_backup-external.tar';
+                        $file_dir = dirname(__FILE__).SNS_DS.'sns_backup-external.tar';
                         if( move_uploaded_file( $backup_file['tmp_name'] , $file_dir ) ){
                             $backup_dir = substr( $file_dir , 0 , strlen($file_dir)-4 );
                             Sns_Log::log_action('Restoring from external file');

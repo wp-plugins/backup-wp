@@ -106,7 +106,7 @@
             chmod($dir , 0777);
             foreach( $items as $name => $path ){
                 if( $name == Sns_Option::DB ){
-                    $sql_file = $dir.'/wp_dump.sql';
+                    $sql_file = $dir.SNS_DS.'wp_dump.sql';
                     $fp = fopen($sql_file, 'a+');
                     if( $fp === false ){
                         throw new Sns_Exception_Unavailable_Operation( 'Cannot open the file '.$sql_file );
@@ -126,7 +126,7 @@
                 $exclude = array(
                     realpath( SNS_BACKUP_ROOT ),
                     realpath( SNS_BACKUPS_PATH ),
-                    realpath( WP_CONTENT_DIR.'/debug.log' )
+                    realpath( WP_CONTENT_DIR.SNS_DS.'debug.log' )
                 );
                 $filterIterator = new CallbackFilterIterator($iterator , function ($file) use ($exclude) {
                     foreach( $exclude as $excludeFile ){
@@ -136,7 +136,7 @@
                     }
                     return true;
                 });
-                $phar = new PharData($dir.'/'.$name.'.tar');
+                $phar = new PharData($dir.SNS_DS.$name.'.tar');
                 $phar->buildFromIterator($filterIterator , $path);
             }
             $phar = new PharData($dir.'.tar');
