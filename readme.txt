@@ -2,9 +2,9 @@
 Contributors: Backup By Sygnoos, Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
 Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup, full backup, transfer, save, security, swift, webdav backup,
-Requires at least: 3.4
+Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 2.7
+Stable tag: 2.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,8 +50,8 @@ One of the biggest issues webmasters and website developers have is backing up t
 The WordPress Backup plugin is unique and highly effective for backing up your WordPress website. Its simple user interface has an intuitive feel to it, making the whole backup process a child's play for you - which makes it so much better than the other backup plugins available in the market.
 
 ### Environment Requirements
-* Wordpress >= 3.4
-* PHP >= 5.4 (PHP >= 5.3 you can find [here](http://sygnoos.com/wpbackup/))
+* Wordpress >= 3.9
+* PHP >= 5.3
 
 ### If you think, that you found a bug in our <a href="http://sygnoos.com/wpbackup/">WordPress Backup</a> plugin or have any question contact us at <a href="mailto:wp-backup@sygnoos.com">wp-backup@sygnoos.com</a>.
 
@@ -108,6 +108,9 @@ Order our WordPress Backup Pro version [here](http://sygnoos.com/wpbackup/). You
 * Bug fixes.
 * Features added.
 * Feature improvements.
+= 2.7.1 =
+* Bug fixes.
+* Backup and restore optimized
 
 ==Backup Instructions==
 
@@ -152,7 +155,7 @@ BE VERY CAREFUL!!! If you have already created backups only on your local server
 ###Uninstallation
 
 NOTE:
-BE VERY CAREFULL!!! If you have already created backups only on your local server, they will be deleted while you are trying to uninstall the current working version. Download them or store somewhere else before plugin uninstallation.
+BE VERY CAREFUL!!! If you have already created backups only on your local server, they will be deleted while you are trying to uninstall the current working version. Download them or store somewhere else before plugin uninstallation.
 
 * Choose “Plugins” tab from the sidebar menu ( Backup step 1 )
 * Find “Backup” plugin in the plugins table ( Backup step 2 )

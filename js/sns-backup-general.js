@@ -4,16 +4,20 @@
     var $history = {};
     var $settings = {};
     var $state = {};
+    var $options = {};
 
     $state.lastResponseTime = 0;
     $state.TYPE_BACKUP = 'backup';
     $state.TYPE_RESTORE = 'restore';
+    $state.TYPE_UPLOAD = 'upload';
     $state.ACTIVE = 'active';
     $state.FINISHED = 'finished';
     $state.FAILED = 'failed';
     $state.NONE = 'none';
+    $state.READY_TO_START = 'ready_to_start';
     $state.backupProgress = null;
     $state.restoreProgress = null;
+    $state.uploadProgress = null;
     $state.currentStatus = $state.NONE;
 
     $state.isDisabled = false;
@@ -31,24 +35,12 @@
     $state.polling = null;
     $state.startPoll = function(){
         $state.getStatus();
-        $state.polling = setInterval(
-            function(){
-                $state.getStatus();
-            },
-            500
-        );
     };
 
     $state.stopPoll = function(){
-//        clearInterval( $state.polling );
-//        $state.polling = null;
-//        $.snsToast();
-
         if( $state.backupProgress != null ){
-//            $.snsToast('Backing up...');
             $state.quickCompleteProgress( $state.TYPE_BACKUP );
         }else if( $state.restoreProgress != null ){
-//            $.snsToast('Restoring...');
             $state.quickCompleteProgress( $state.TYPE_RESTORE );
         }else{
             $state.enableActions();
@@ -62,11 +54,18 @@
             data	    : 	{action : 'sns_state_get_status'},
             dataType	: 	'json',
             success		: 	function( result ) {
-                $state.currentStatus = result.data.status;
-                if( result.response_time > $state.lastResponseTime  ){
-                    $state.lastResponseTime = result.response_time;
-                    $state.processStatus( result.data );
+                if(typeof result.data !== 'undefined'){
+                    $state.currentStatus = result.data.status;
+                    if( $state.processStatus( result.data ) ){
+                        $state.getStatus();
+                    }
+                }else{
+                    $state.getStatus();
                 }
+
+            },
+            error       :   function( result ) {
+                $state.getStatus();
             }
         } );
     };
@@ -109,17 +108,12 @@
 
     $state.processStatus = function( data ){
 
-        if( data.status == $state.ACTIVE ){
+        if( data.status == $state.ACTIVE || data.status == $state.READY_TO_START ){
             if(!$state.isDisabled){
                 $state.disableActions();
             }
-//            if( data.type == $state.TYPE_BACKUP ){
-//                $.snsToast('Backing up...');
-//            }else if( data.type == $state.TYPE_RESTORE ){
-//                $.snsToast('Restoring...');
-//            }
             $state.drawProgress( data );
-            return;
+            return true;
         }
         if( data.status == $state.FINISHED ){
             $state.reset();
@@ -148,6 +142,7 @@
             }
         }
         $state.stopPoll();
+        return false;
     };
 
     $state.drawProgress = function( data ) {
@@ -164,6 +159,12 @@
             }
             $state.restoreProgress.progressbar( "value", data.progress );
             $state.restoreProgressLabel.text( data.progress_view );
+        }else if( data.type == $state.TYPE_UPLOAD ){
+            if( $state.uploadProgress == null ){
+                $state.progressInit( data.type );
+            }
+            $state.uploadProgress.progressbar( "value", data.progress );
+            $state.uploadProgressLabel.text( data.progress_view );
         }
     };
 
@@ -211,6 +212,19 @@
                     $state.enableActions();
                 }
             });
+        }else if( type == $state.TYPE_UPLOAD ){
+            $state.uploadProgress = $( "#progressbar-upload" );
+            $state.uploadProgressLabel = $( "#progressbar-upload .progress-label" );
+            $state.uploadProgress.progressbar({
+                value: false,
+                max: 100,
+                complete: function() {
+                    $state.uploadProgressLabel.text("");
+                    $state.uploadProgress.progressbar( "destroy" );
+                    $state.uploadProgress = null;
+                    $.snsToast('Uploaded!' , true);
+                }
+            });
         }
 
     };
@@ -224,21 +238,74 @@
         var send_data = form.serializeArray();
         send_data.push({name: 'action', value :'sns_manual_backup'});
         $.snsToast('Waiting...');
+
+        $.ajax ( {
+            type		:	'post',
+            url			: 	ajaxurl,
+            data	    : 	{action:'sns_prepare_process',type:'backup'},
+            dataType	: 	'json',
+            success     :   function( result ){
+                $.ajax ( {
+                    type		:	'post',
+                    url			: 	ajaxurl,
+                    data	    : 	send_data,
+                    dataType	: 	'json'
+                } );
+                $state.startPoll();
+            }
+        } );
+    };
+
+    $options.configure = function(){
+
+        $("#backup-main-content .option-full").change(function(){
+            if($(this).is(':checked')){
+                $("#backup-main-content .option").attr('checked','checked');
+            }
+        });
+        $("#backup-main-content .option").change(function(){
+            if(!$(this).is(':checked')){
+                $("#backup-main-content .option-full").removeAttr('checked');
+            }
+        });
+
+    };
+
+    $options.save = function(){
+
+        var form = $("#backup-main-content .options-form");
+        var send_data = form.serializeArray();
+        send_data.push({name: 'action', value :'sns_save_options'});
+        $.snsToast('Saving...');
         $.ajax ( {
             type		:	'post',
             url			: 	ajaxurl,
             data	    : 	send_data,
-            dataType	: 	'json'
+            dataType	: 	'json',
+            success		: 	function( result ) {
+                if( result.status == 'OK' ){
+                    $.snsToast('Saved!' , true);
+                }else{
+                    $.processResult( result );
+                }
+            },
+            error:function( result ) {
+                $.processResult( JSON.parse(result.responseText) );
+            }
         } );
-//        $state.startPoll();
+
     };
 
     $settings.saveFTP = function(){
 
+        if( $state.isDisabled ){
+            return false;
+        }
         var form = $("#backup-main-content .ftp-form");
         var send_data = form.serializeArray();
         send_data.push({name: 'action', value :'sns_save_ftp'});
         $.snsToast('Linking...');
+        $state.disableActions();
         $.ajax ( {
             type		:	'post',
             url			: 	ajaxurl,
@@ -254,9 +321,11 @@
                 }else{
                     $.processResult( result );
                 }
+                $state.enableActions();
             },
             error:function( result ) {
                 $.processResult( JSON.parse(result.responseText) );
+                $state.enableActions();
             }
         } );
 
@@ -320,13 +389,12 @@
     };
 
     $settings.process_check = function( dest_type ){
+        $("#backup-main-content .location-"+dest_type).removeAttr("checked");
         if ( confirm( "Cannot connect to "+dest_type+", click OK to check details." ) ) {
             var index = $('#backup-main-content #menu-tabs a[href="#menu-tab-settings"]').parent().index();
             $("#backup-main-content #menu-tabs").tabs("option", "active", index);
             var index = $('#backup-main-content #settings-tabs a[href="#settings-tab-cloud"]').parent().index();
             $("#backup-main-content #settings-tabs").tabs("option", "active", index);
-        } else {
-            $("#backup-main-content .location-"+dest_type).removeAttr("checked");
         }
     };
 
@@ -402,22 +470,83 @@
         }
         $state.disableActions();
         $.snsToast('Waiting...');
+
         $.ajax ( {
-            type		:	'get',
+            type		:	'post',
             url			: 	ajaxurl,
-            data        :   { id: id , action: 'sns_backup_restore' },
-            dataType	: 	'json'
+            data	    : 	{action:'sns_prepare_process',type:'restore'},
+            dataType	: 	'json',
+            success     :   function( result ){
+                $.ajax ( {
+                    type		:	'get',
+                    url			: 	ajaxurl,
+                    data        :   { id: id , action: 'sns_backup_restore' },
+                    dataType	: 	'json'
+                } );
+                $state.startPoll();
+            }
         } );
-//        $state.startPoll();
 
     };
 
+
+
+    function sns_remove_param_from_url(url, parameter) {
+        //prefer to use l.search if you have a location/link object
+        var urlparts= url.split('?');
+        if (urlparts.length>=2) {
+
+            var prefix= encodeURIComponent(parameter)+'=';
+            var pars= urlparts[1].split(/[&;]/g);
+
+            //reverse iteration as may be destructive
+            for (var i= pars.length; i-- > 0;) {
+                //idiom for string.startsWith
+                if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+                    pars.splice(i, 1);
+                }
+            }
+
+            url= urlparts[0]+'?'+pars.join('&');
+            return url;
+        } else {
+            return url;
+        }
+    }
+
+    function sns_replace_url_param(url, paramName, paramValue){
+        var pattern = new RegExp('('+paramName+'=).*?(&|$)');
+        var newUrl=url;
+        if(url.search(pattern)>=0){
+            if(paramValue == '')
+            {
+                newUrl = url.replace(pattern,'');
+            } else {
+                newUrl = url.replace(pattern,'$1' + paramValue + '$2');
+            }
+        }
+        else{
+            if( paramValue!='' ){
+                newUrl = newUrl + (newUrl.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
+            }
+        }
+        return newUrl;
+    }
+
     $history.configure = function(){
         $("#backup-main-content .btn-delete").click(function(){
-            $history.delete( $(this).data('backup_id') , $(this) );
+            if ( confirm( "Are you sure you want to delete the backup?" ) ) {
+                $history.delete( $(this).data('backup_id') , $(this) );
+            }
         });
         $("#backup-main-content .btn-restore").click(function(){
-            $history.restore( $(this).data('backup_id') );
+            var url = window.location.href;
+            url = sns_remove_param_from_url(url, 'sns_ex_restore');
+            url = sns_remove_param_from_url(url, 'sns_uname');
+            url = sns_replace_url_param(url, 'sns_restore', 1);
+            url = sns_replace_url_param(url, 'sns_backup_id', $(this).data('backup_id'));
+            window.location.href = url;
+            // $history.restore( $(this).data('backup_id') );
         });
     };
 
@@ -429,10 +558,11 @@
             browse_button : 'external-browse',
             container: document.getElementById('external-container'),
             url : ajaxurl,
-            multipart_params: {'action':'sns_external_restore'},
+            multipart_params: {'action':'sns_external_upload'},
             file_data_name: 'backup_file',
             multi_selection: false,
             filters : {
+                max_file_size:$("#sns-max-filesize").val(),
                 mime_types: [
                     {title : "tar files", extensions : "tar"}
                 ]
@@ -446,7 +576,7 @@
                         }
                         $state.disableActions();
                         uploader.start();
-//                        $state.startPoll();
+
                         return false;
                     };
                 },
@@ -455,31 +585,82 @@
                     $("#backup-main-block .external-backup-input").val(files[0]['name']);
                 },
 
-                UploadComplete: function() {
+                UploadProgress: function(up, file){
+                    var data = {
+                        type:$state.TYPE_UPLOAD,
+                        progress:file.percent,
+                        progress_view:file.percent+'%'
+                    };
+                    $state.drawProgress( data );
+                },
 
-                    if( $("#backup-main-block .external-backup-input").val() == '' ){
-                        return;
+                FileUploaded: function(upldr, file, object) {
+                    var result;
+                    try {
+                        result = eval(object.response);
+                    } catch(err) {
+                        result = eval('(' + object.response + ')');
                     }
-                    $("#backup-main-block .external-backup-input").val('');
-
-                    var control = $("#backup-main-block input[name=backup_file]");
-                    control.replaceWith( control = control.clone( true ) );
-
+                    if(result.status == 'OK'){
+                        $history.externalRestore(result.uname);
+                    }else{
+                        $.processResult(result);
+                    }
                 },
 
                 BeforeUpload: function() {
-                    $.snsToast('Uploading & restoring...');
+                    $.snsToast('Uploading...');
                 },
 
                 Error: function(up, err) {
-                    uploadResponse = JSON.parse( err.response );
-                    $.processResult(uploadResponse);
+                    if(typeof err.response != 'undefined'){
+                        uploadResponse = JSON.parse( err.response );
+                        $.processResult(uploadResponse);
+                    }else{
+                        alert(err.message);
+                    }
                 }
             }
         });
 
         uploader.init();
 
+    };
+
+    $history.externalRestore = function(uname){
+        var url = window.location.href;
+        url = sns_remove_param_from_url(url, 'sns_restore');
+        url = sns_remove_param_from_url(url, 'sns_backup_id');
+        url = sns_replace_url_param(url, 'sns_ex_restore', 1);
+        url = sns_replace_url_param(url, 'sns_uname', uname);
+        window.location.href = url;
+
+//        $.snsToast('Restoring...');
+//
+//        $.ajax ( {
+//            type		:	'post',
+//            url			: 	ajaxurl,
+//            data	    : 	{action:'sns_prepare_process',type:'restore'},
+//            dataType	: 	'json',
+//            success     :   function( result ){
+//                $.ajax ( {
+//                    type		:	'post',
+//                    url			: 	ajaxurl,
+//                    data        :   { filename: filename , action: 'sns_external_restore' },
+//                    dataType	: 	'json',
+//                    success     :   function(){
+//                        if( $("#backup-main-block .external-backup-input").val() == '' ){
+//                            return;
+//                        }
+//                        $("#backup-main-block .external-backup-input").val('');
+//
+//                        var control = $("#backup-main-block input[name=backup_file]");
+//                        control.replaceWith( control = control.clone( true ) );
+//                    }
+//                } );
+//                $state.startPoll();
+//            }
+//        } );
     };
 
     $( document ).ready(function(){
@@ -489,7 +670,7 @@
         });
 
         $("#backup-main-content #settings-tabs").tabs();
-        $('#backup-main-content #menu-tabs').tabs({
+        $("#backup-main-content #menu-tabs").tabs({
             activate: function(event ,ui){
                 if(ui.newTab.find('a').attr('href') == '#menu-tab-history'){
                     $.snsToast('Updating...');

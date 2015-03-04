@@ -1,7 +1,7 @@
 <?php
     class Sns_Notification {
 
-        public function draw(){
+        public static function draw(){
 ?>
             <form  class="notifications-form">
                 <div class="form-group">

@@ -1,8 +1,7 @@
 <?php
     class Sns_Log {
 
-        private static $log_file_handle  = 	null;
-        private static $log_file        = 	null;
+        private static $log_file = SNS_LOG_FILE;
 
         public static function log_action( $action = '' , $position = SNS_LOG_START ) {
             if( $position == SNS_LOG_END ){
@@ -37,28 +36,22 @@
         }
 
         public static function get_log(){
-            self::$log_file = SNS_LOG_FILE;
-            $content = file_get_contents( self::$log_file );
+            $content = @file_get_contents( self::$log_file );
             if( $content === false ){
                 throw new Sns_Exception_Unavailable_Operation('Cannot read the log file.');
             }
-            return str_replace(PHP_EOL, (PHP_EOL.PHP_EOL), $content);
+            return $content;
         }
 
         public static function empty_log(){
-            self::$log_file = SNS_LOG_FILE;
-            $content = file_put_contents( self::$log_file , '' );
+            $content = @file_put_contents( self::$log_file , '' );
             if( $content === false ){
                 throw new Sns_Exception_Unavailable_Operation('Cannot write in the log file.');
             }
         }
 
         private static function log( $log_str ){
-            self::$log_file = SNS_LOG_FILE;
-            if( self::$log_file_handle == null ) {
-                self::$log_file_handle = fopen(  self::$log_file , 'a+' );
-            }
-            fwrite( self::$log_file_handle , $log_str );
+            @file_put_contents( self::$log_file , $log_str , FILE_APPEND );
         }
 
     }

@@ -2,7 +2,6 @@
 
     require_once( dirname(__FILE__).DIRECTORY_SEPARATOR.'sns-config.php' );
 
-    Sns_Error_Handler::init();
     Sns_Exception_Handler::init();
 
     function sns_send_response( $result ){
@@ -21,35 +20,57 @@
 
     function sns_backup_manual_backup() {
 
-        $state = Sns_State::get_status();
-        if( $state['status'] == Sns_State::STATUS_ACTIVE ){
-            throw new Sns_Exception_Unavailable_Operation('There is an existing active process.Please wait.');
-        }
-
-        $stateData = array(
-            'status' => Sns_State::STATUS_ACTIVE,
-            'type' => Sns_State::TYPE_BACKUP,
-            'start_date' => date('Y-m-d H:i:s')
-        );
-        Sns_State::update( $stateData );
         try{
-            sleep(4);
+            $state = Sns_State::get_status();
+            if( $state['status'] == Sns_State::STATUS_ACTIVE ){
+                throw new Sns_Exception_Unavailable_Operation('There is an existing active process.Please wait.');
+            }
+            $stateData = array(
+                'status' => Sns_State::STATUS_ACTIVE,
+                'type' => Sns_State::TYPE_BACKUP,
+                'start_date' => date('Y-m-d H:i:s')
+            );
+            Sns_State::update( $stateData );
+
+            Sns_Checker::check();
             $locations = ( isset( $_POST['locations'] )?$_POST['locations']:array());
             $destination = new Sns_Destination( Sns_Backup::BACKUP_MODE_MANUAL );
-            Sns_Log::log_action('Saving destinations');
             $destination->set_destinations( $locations );
             $destination->save();
-            Sns_Log::log_action('Saving destinations' , SNS_LOG_END);
             $backup = new Sns_Backup( Sns_Backup::BACKUP_MODE_MANUAL );
             Sns_Log::log_action('Backing up');
-            $backup->backup();
+            $warns = $backup->backup();
             Sns_Log::log_action('Backing up', SNS_LOG_END);
+
+            $skipped_files = '';
+            if( !empty( $warns['too_long_filename'] ) || !empty( $warns['utf8_filename'] ) ){
+                $skipped_files .= '*********WARNING**********'.PHP_EOL;
+                if( !empty( $warns['too_long_filename'] )){
+                    $skipped_files .= 'The following filenames are too long and were excluded from backup package'.PHP_EOL;
+                    $i = 1;
+                    foreach( $warns['too_long_filename'] as $file ){
+                        $skipped_files .= $i.'. '.$file.PHP_EOL;
+                        $i++;
+                    }
+                }
+                if( !empty( $warns['utf8_filename'] ) ){
+                    $skipped_files .= 'The following filenames have utf-8 encoding and were excluded from backup package'.PHP_EOL;
+                    $i = 1;
+                    foreach( $warns['utf8_filename'] as $file ){
+                        $skipped_files .= $i.'. '.$file.PHP_EOL;
+                        $i++;
+                    }
+                }
+                Sns_Log::log_msg( $skipped_files );
+            }
+
             $stateData = array(
                 'status' => Sns_State::STATUS_FINISHED,
                 'type' => Sns_State::TYPE_BACKUP
             );
             Sns_State::update( $stateData );
         }catch( Exception $e ){
+            Sns_Log::log_exception_obj($e);
             $ex_data = Sns_Exception_Handler::get_exception_data( $e );
             $stateData = array(
                 'status'    => Sns_State::STATUS_FAILED,
@@ -68,34 +89,32 @@
         if( ( $state['status'] == Sns_State::STATUS_ACTIVE ) ){
             throw new Sns_Exception_Unavailable_Operation('There is an existing active process.Please wait.');
         }
-        Sns_Log::log_action( 'Deleting backup' );
         Sns_History::delete( $_GET['id'] );
-        Sns_Log::log_action( 'Deleting backup' , SNS_LOG_END );
         $result = new stdClass();
         $result->status = 'OK';
         sns_send_response( $result );
 
     }
 
-    function sns_backup_backup_restore(){
+    function sns_backup_backup_restore($backupId){
 
-        $state = Sns_State::get_status();
-        if( ( $state['status'] == Sns_State::STATUS_ACTIVE ) ){
-            throw new Sns_Exception_Unavailable_Operation('There is an existing active process.Please wait.');
-        }
-
-        $stateData = array(
-            'status' => Sns_State::STATUS_ACTIVE,
-            'type' => Sns_State::TYPE_RESTORE,
-            'start_date' => date('Y-m-d H:i:s')
-        );
-        Sns_State::update( $stateData );
         try{
-            sleep(4);
+            $state = Sns_State::get_status();
+            if( ( $state['status'] == Sns_State::STATUS_ACTIVE ) ){
+                throw new Sns_Exception_Unavailable_Operation('There is an existing active process.Please wait.');
+            }
+
+            $stateData = array(
+                'status' => Sns_State::STATUS_ACTIVE,
+                'type' => Sns_State::TYPE_RESTORE,
+                'start_date' => date('Y-m-d H:i:s')
+            );
+            Sns_State::update( $stateData );
             Sns_Log::log_action( 'Restoring' );
             try{
-                Sns_History::restore( $_GET['id'] );
+                Sns_History::restore( $backupId );
             }catch( Exception $e ){
+                Sns_Log::log_exception_obj( $e );
                 Sns_Log::log_msg('[FAILED Restore]');
                 throw $e;
             }
@@ -108,6 +127,7 @@
             );
             Sns_State::update( $stateData );
         }catch( Exception $e ){
+            Sns_Log::log_exception_obj($e);
             $ex_data = Sns_Exception_Handler::get_exception_data( $e );
             $stateData = array(
                 'status'    => Sns_State::STATUS_FAILED,
@@ -116,46 +136,66 @@
             );
             Sns_State::update( $stateData );
         }
-        die();
+        wp_redirect( admin_url( "admin.php?page=".$_GET['page'] ) );
 
     }
 
-    function sns_backup_external_restore() {
+    function sns_backup_external_upload() {
 
         $state = Sns_State::get_status();
-        if( ( $state['status'] == Sns_State::STATUS_ACTIVE ) ){
+        if( $state['status'] == Sns_State::STATUS_ACTIVE ){
             throw new Sns_Exception_Unavailable_Operation('There is an existing active process.Please wait.');
         }
-
-        $stateData = array(
-            'status' => Sns_State::STATUS_ACTIVE,
-            'type' => Sns_State::TYPE_RESTORE,
-            'start_date' => date('Y-m-d H:i:s')
-        );
-        Sns_State::update( $stateData );
+        $uname = date('m_d-H_i_s');
+        $file_dir = dirname(__FILE__).SNS_DS.'sns_backup-external-'.$uname.'.tar';
         try{
-            sleep(4);
-            try{
-                if( !empty( $_FILES ) && isset( $_FILES['backup_file']) && $_FILES['backup_file']['type'] == 'application/x-tar' ){
-                    $backup_file = $_FILES['backup_file'];
-                    $extension = substr( basename($backup_file['name']) , -4 );
-                    if( $extension == '.tar' ){
-                        $file_dir = dirname(__FILE__).SNS_DS.'sns_backup-external.tar';
-                        if( move_uploaded_file( $backup_file['tmp_name'] , $file_dir ) ){
-                            $backup_dir = substr( $file_dir , 0 , strlen($file_dir)-4 );
-                            Sns_Log::log_action('Restoring from external file');
-                            Sns_History::restore_from_file( $backup_dir , $file_dir );
-                            Sns_Log::log_action('Restoring from external file' , SNS_LOG_END);
-                            if( unlink( $file_dir ) === false ){
-                                throw new Sns_Exception_Unavailable_Operation( 'Cannot delete the file '.$file_dir );
-                            }
-                        }else{
-                            throw new Sns_Exception_Unavailable_Operation( 'Cannot move uploaded file' );
-                        }
+            if( !empty( $_FILES ) && isset( $_FILES['backup_file']) && $_FILES['backup_file']['type'] == 'application/x-tar' ){
+                $backup_file = $_FILES['backup_file'];
+                $extension = substr( basename($backup_file['name']) , -4 );
+                if( $extension == '.tar' ){
+                    if( !move_uploaded_file( $backup_file['tmp_name'] , $file_dir ) ){
+                        throw new Sns_Exception_Unavailable_Operation( 'Cannot move uploaded file' );
+                    }else{
+                        $result = new stdClass();
+                        $result->status = 'OK';
+                        $result->uname = $uname;
+                        sns_send_response($result);
                     }
-                }else{
+                }
+            }else{
+                throw new Sns_Exception_Not_Found( 'File not found' );
+            }
+        }catch( Exception $e ){
+            Sns_Log::log_exception_obj($e);
+            throw $e;
+        }
+        die();
+    }
+
+    function sns_backup_external_restore() {
+        try{
+            $state = Sns_State::get_status();
+            if( ( $state['status'] == Sns_State::STATUS_ACTIVE ) ){
+                throw new Sns_Exception_Unavailable_Operation('There is an existing active process.Please wait.');
+            }
+
+            $stateData = array(
+                'status' => Sns_State::STATUS_ACTIVE,
+                'type' => Sns_State::TYPE_RESTORE,
+                'start_date' => date('Y-m-d H:i:s')
+            );
+            Sns_State::update( $stateData );
+            try{
+                $uname = date('m_d-H_i_s');
+                $file_dir = dirname(__FILE__).SNS_DS.'sns_backup-external-'.$uname.'.tar';
+                if( !file_exists($file_dir) ){
                     throw new Sns_Exception_Not_Found( 'File not found' );
                 }
+                $backup_dir = substr( $file_dir , 0 , strlen($file_dir)-4 );
+                Sns_Log::log_action('Restoring from external file');
+                Sns_History::restore_from_file( $backup_dir , $file_dir );
+                Sns_Log::log_action('Restoring from external file' , SNS_LOG_END);
+                @unlink( $file_dir );
                 Sns_Log::log_msg('[SUCCEED Restore]'.PHP_EOL);
             }catch( Exception $e ){
                 Sns_Log::log_msg('[FAILED Restore]'.PHP_EOL);
@@ -167,6 +207,7 @@
             );
             Sns_State::update( $stateData );
         }catch( Exception $e ){
+            Sns_Log::log_exception_obj($e);
             $ex_data = Sns_Exception_Handler::get_exception_data( $e );
             $stateData = array(
                 'status'    => Sns_State::STATUS_FAILED,
@@ -174,9 +215,9 @@
                 'msg'       => $ex_data['status'].' : '.$ex_data['msg']
             );
             Sns_State::update( $stateData );
-        }
-        die();
 
+            wp_redirect( admin_url( "admin.php?page=".$_GET['page'] ) );
+        }
     }
 
     function sns_backup_save_ftp() {
@@ -248,6 +289,14 @@
     function sns_backup_state_reset_status(){
         $stateData = array(
             'status' => Sns_State::STATUS_NONE
+        );
+        Sns_State::update( $stateData );
+        die();
+    }
+    function sns_backup_prepare_process(){
+        $stateData = array(
+            'status' => Sns_State::STATUS_READY_TO_START,
+            'type' => (isset($_POST['type']) && $_POST['type'] == Sns_State::TYPE_RESTORE)?Sns_State::TYPE_RESTORE:Sns_State::TYPE_BACKUP
         );
         Sns_State::update( $stateData );
         die();

@@ -18,8 +18,8 @@
                         <div class="menu-content">
                             <form class="manual-form" autocomplete="off" role="form" action="">
                                 <?php
-                                    $destination = new Sns_Destination( Sns_Backup::BACKUP_MODE_MANUAL );
-                                    $destination->draw();
+                                $destination = new Sns_Destination( Sns_Backup::BACKUP_MODE_MANUAL );
+                                $destination->draw();
                                 ?>
                                 <div class="separator"></div>
                                 <div class="cb"></div>
@@ -51,20 +51,19 @@
                                 </div>
                                 <div id="settings-tab-notifications">
                                     <?php
-                                        $notifications = new Sns_Notification();
-                                        $notifications->draw();
+                                        Sns_Notification::draw();
                                     ?>
                                 </div>
                                 <div id="settings-tab-cloud">
                                     <div id="dropbox-block">
                                         <?php
-                                            $dropbox = Sns_Dropbox::draw();
+                                        Sns_Dropbox::draw();
                                         ?>
                                     </div>
                                     <div id="ftp-block">
                                         <?php
-                                            $ftp = new Sns_Ftp();
-                                            $ftp->draw();
+                                        $ftp = new Sns_Ftp();
+                                        $ftp->draw();
                                         ?>
                                     </div>
                                 </div>
@@ -85,7 +84,15 @@
                     </div>
                 </div>
             </div>
-<!--            <a target="_blank" href="--><?php //echo SNS_BACKUP_URL.'/terms.txt'; ?><!--" class="fr terms">By using "Backup" plugin you're agreeing these terms</a>-->
+            <?php
+                $uploadSize = @ini_get('upload_max_filesize');
+                $uploadSize = (false === $uploadSize)?0:sns_return_bytes($uploadSize);
+
+                $postSize = @ini_get('post_max_size');
+                $postSize = (false === $postSize)?0:sns_return_bytes($postSize);
+            ?>
+            <input id="sns-max-filesize" type="hidden" value="<?php echo min($uploadSize, $postSize); ?>">
+            <!--            <a target="_blank" href="--><?php //echo SNS_BACKUP_URL.'/terms.txt'; ?><!--" class="fr terms">By using "Backup" plugin you're agreeing these terms</a>-->
         </div>
     </div>
 </div>

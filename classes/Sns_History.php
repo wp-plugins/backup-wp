@@ -196,8 +196,7 @@
         public static function draw( $only_records = false ){
             $history = self::get_history();
             $state = Sns_State::get_status();
-            $scheduleState = Sns_State::get_status(Sns_Backup::BACKUP_MODE_SCHEDULE);
-            $disabled = ( $only_records && (( $state['status'] == Sns_State::STATUS_ACTIVE ) || !empty( $scheduleState )) )?' disabled="disabled" ':'';
+            $disabled = ( $only_records && ( $state['status'] == Sns_State::STATUS_ACTIVE ) )?' disabled="disabled" ':'';
             if( !$only_records ){
 ?>
             <span class="menu-title">Your Backup History</span>
