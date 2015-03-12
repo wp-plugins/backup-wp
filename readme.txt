@@ -1,9 +1,9 @@
 === Backup ===
 Contributors: Backup By Sygnoos, Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
-Tags: backup, mysql, database, dump, db, website, duplicate, email, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup, full backup, transfer, save, security, swift, webdav backup, backup pages, backup plugins, backup posts,
+Tags: backup, mysql, database, dump, db, website, duplicate, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup, full backup, transfer, save, security, webdav backup, backup pages, backup plugins, backup posts
 Requires at least: 3.9
-Tested up to: 4.1
+Tested up to: 4.1.1
 Stable tag: 2.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
