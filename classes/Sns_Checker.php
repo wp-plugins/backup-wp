@@ -8,9 +8,9 @@
             if (!extension_loaded('mbstring')) {
 				throw new Sns_Exception_Not_Found('PHP mbstring extension is not loaded.');
 			}
-			
+
 			if ($onlyExtensions) return;
-			
+
             if( !is_dir( SNS_BACKUPS_PATH ) ){
                 if( !mkdir( SNS_BACKUPS_PATH ) ){
                     throw new Sns_Exception_Unavailable_Operation('Cannot create folder '.SNS_BACKUPS_PATH);
@@ -31,7 +31,7 @@
             if ( version_compare(PHP_VERSION, '5.3.0', '<') ) {
                 wp_die('PHP >=5.3.0 version required.');
             }
-            
+
             try{
             	self::check(true);
             }catch(Exception $e){

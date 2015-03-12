@@ -38,12 +38,12 @@ class Sns_Backup {
 
             $destinations = new Sns_Destination( $this->type );
             $locations = $destinations->get_destinations();
-            $filePath = SNS_BACKUPS_PATH.$this->filename.'.tar';
+            $filePath = SNS_BACKUPS_PATH.$this->filename.'.zip';
             if( $locations[Sns_Destination::SETTINGS_FTP]->status == Sns_Destination::SET ){
                 Sns_Log::log_action('Uploading to FTP server');
                 try{
                     $ftp = new Sns_Ftp();
-                    $ftp->upload( $filePath , $this->filename.'.tar' );
+                    $ftp->upload( $filePath , $this->filename.'.zip' );
                 }catch( Exception $e ){
                     Sns_Exception_Handler::log( $e );
                 }
@@ -83,48 +83,47 @@ class Sns_Backup {
                                   WHERE `id` = {$backup->id}
                               ";
                 $wpdb->query($query);
-                $file = SNS_BACKUPS_PATH.$backup->filename.'.tar';
+                $file = SNS_BACKUPS_PATH.$backup->filename.'.zip';
                 if( is_file( $file ) ){
                     unlink( $file );
                 }
             }
         }
     }
-    private function detectUTF8($string)
-    {
-        return preg_match('%(?:
-            [\xC2-\xDF][\x80-\xBF]        # non-overlong 2-byte
-            |\xE0[\xA0-\xBF][\x80-\xBF]               # excluding overlongs
-            |[\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}      # straight 3-byte
-            |\xED[\x80-\x9F][\x80-\xBF]               # excluding surrogates
-            |\xF0[\x90-\xBF][\x80-\xBF]{2}    # planes 1-3
-            |[\xF1-\xF3][\x80-\xBF]{3}                  # planes 4-15
-            |\xF4[\x80-\x8F][\x80-\xBF]{2}    # plane 16
-            )+%xs', $string);
-    }
 
     public function backup_items( $items ){
         $hash = $this->get_new_hash();
         $filename = 'sns_'.get_bloginfo('name').'_'.date('Y.m.d__H_i').'_'.$hash;
         $dir =  SNS_BACKUPS_PATH.$filename;
-        if( !mkdir( $dir ) ){
-            throw new Sns_Exception_Unavailable_Operation( 'Cannot create the directory '.$dir );
+
+        if (!class_exists('Zip', false)) {
+            require_once SNS_LIB_PATH.'Zip.php';
         }
-        $warns = array(
-            'too_long_filename' => array(),
-            'utf8_filename' => array()
-        );
+        $warns = array('not_readable' => array());
+
+        $zip = new Zip();
+        $zip->setZipFile($dir.'.zip');
+
         foreach( $items as $name => $path ){
             if( $name == Sns_Option::DB ){
-                $sql_file = $dir.SNS_DS.'wp_dump.sql';
+                $sql_file = 'wp_dump.sql';
                 Sns_Log::log_action('Exporting DB');
                 Sns_Backup::export_db( $sql_file );
                 Sns_Log::log_action('Exporting DB' , SNS_LOG_END);
+
+                $stream = @fopen($sql_file, 'rb');
+                if ($stream) {
+                    $zip->addLargeFile($stream, $sql_file);
+                }
+                @unlink($sql_file);
                 continue;
             }
+            Sns_Log::log_action('Backup item - '.$name);
+            $itemZip = new Zip();
+            $itemZip->setZipFile($name.'.zip');
             $path = realpath( $path );
             $iterator = new RecursiveIteratorIterator(
-                new RecursiveDirectoryIterator($path , FilesystemIterator::SKIP_DOTS)
+                new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)
             );
             $exclude = array(
                 realpath( SNS_BACKUP_ROOT ),
@@ -132,33 +131,38 @@ class Sns_Backup {
                 realpath( WP_CONTENT_DIR.SNS_DS.'debug.log' )
             );
 
-            $filterIterator = new Sns_Callback_Filter_Iterator($iterator , function ($file) use ($exclude, &$warns) {
+            for ($iterator->rewind(); $iterator->valid(); $iterator->next()) {
+                $file = $iterator->current();
+                $continue = false;
                 foreach( $exclude as $excludeFile ){
                     if( strpos( $file, $excludeFile ) !== false ){
-                        return false;
+                        $continue = true;
                     }
                 }
-                if( strlen( basename( $file ) ) >= 100 ){
-                    $warns['too_long_filename'][] = $file;
-                    return false;
-                }
-                if( $this->detectUTF8($file) ){
-                    $warns['utf8_filename'][] = $file;
-                    return false;
-                }
-                return true;
-            });
+                if($continue) continue;
 
-            Sns_Log::log_action('Backup item - '.$name);
-            $phar = new PharData($dir.SNS_DS.$name.'.tar');
-            $phar->buildFromIterator($filterIterator , $path);
+                if ((file_exists($file) && is_readable($file))){
+                    $stream = @fopen($file, 'rb');
+                    if ($stream) {
+                        $file = substr($file,strlen($path));
+                        $itemZip->addLargeFile($stream, $file);
+                    }
+                }else{
+                    $warns['not_readable'][] = $file;
+                }
+            }
+            $itemZip->finalize();
+            $stream = @fopen($name.'.zip', 'rb');
+            if ($stream) {
+                $zip->addLargeFile($stream, $name.'.zip');
+            }
+            @unlink($name.'.zip');
             Sns_Log::log_action('Backup item - '.$name, SNS_LOG_END);
         }
+
         Sns_Log::log_action('Summarize item backups');
-        $phar = new PharData($dir.'.tar');
-        $phar->buildFromDirectory($dir);
+        $zip->finalize();
         Sns_Log::log_action('Summarize item backups', SNS_LOG_END);
-        Sns_History::delete_dir($dir);
 
         $this->hash = $hash;
         $this->filename = $filename;
@@ -198,9 +202,9 @@ class Sns_Backup {
         $hash_esc = esc_sql( $hash );
         $table = SNS_DB_PREFIX.'backups';
         $backup = $wpdb->get_results( "SELECT
-                                                    `id`
-                                               FROM {$table}
-                                               WHERE `hash` = '{$hash_esc}'"
+                                            `id`
+                                       FROM {$table}
+                                       WHERE `hash` = '{$hash_esc}'"
         );
 
         if( empty( $backup ) ){

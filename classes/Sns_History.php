@@ -44,7 +44,7 @@
             $backup_data = self::get_backup_by_id( $backup_id );
 
             $backup_dir = SNS_BACKUPS_PATH.$backup_data->filename;
-            $backup_file =  $backup_dir.'.tar';
+            $backup_file =  $backup_dir.'.zip';
             if( !is_file( $backup_file ) ){
                 throw new Sns_Exception_Not_Found( 'File not found '.$backup_file );
             }
@@ -58,21 +58,27 @@
             if( mkdir( $backup_dir ) === false ){
                 throw new Sns_Exception_Unavailable_Operation( 'Cannot create the directory '.$backup_dir );
             }
-            Sns_Log::log_action('Restoring item '.$backup_file);
             self::restore_item( $backup_file , $backup_dir );
-            Sns_Log::log_action('Restoring item '.$backup_file , SNS_LOG_END);
             $options = Sns_Option::get_locations();
 
             foreach( $options as $option => $to ){
-                $item = ( $option == Sns_Option::DB )?($backup_dir.SNS_DS.'wp_dump.sql'):($backup_dir.SNS_DS.$option.'.tar');
-                if( is_file( $item ) ){
+                $item = ( $option == Sns_Option::DB )?($backup_dir.SNS_DS.'wp_dump.sql'):($backup_dir.SNS_DS.$option.'.zip');
+                if( file_exists( $item ) ){
                     if( $option == Sns_Option::DB ){
                         Sns_Log::log_action('Restoring database');
-                        Sns_Backup::import_db( $item , true );
+                        try{
+                            Sns_Backup::import_db( $item , true );
+                        } catch( Exception $e ) {
+                            Sns_Log::log_exception_obj( $e );
+                        }
                         Sns_Log::log_action('Restoring database' , SNS_LOG_END);
                     }else{
                         Sns_Log::log_action('Restoring item '.$item);
-                        self::restore_item( $item , $to );
+                        try{
+                            self::restore_item( $item , $to );
+                        } catch( Exception $e ){
+                            Sns_Log::log_exception_obj( $e );
+                        }
                         Sns_Log::log_action('Restoring item '.$item , SNS_LOG_END);
                     }
                 }
@@ -83,7 +89,10 @@
 
         public static function restore_item( $item_path , $restore_path ){
 
-            $phar = new PharData( $item_path );
+            if (!class_exists('PclZip', false)) {
+                require_once SNS_LIB_PATH.'pclzip.lib.php';
+            }
+            $pcl = new PclZip($item_path);
             if( is_dir( $restore_path ) ){
                 self::delete_dir( $restore_path , array(
                     realpath( SNS_BACKUP_ROOT ) ,
@@ -96,7 +105,9 @@
                     throw new Sns_Exception_Unavailable_Operation( 'Cannot create the directory '.$restore_path );
                 }
             }
-            $phar->extractTo( $restore_path , null , true );
+            if ($files = $pcl->extract(PCLZIP_OPT_PATH, $restore_path, PCLZIP_OPT_REPLACE_NEWER) === 0) {
+                throw new Sns_Exception_Unavailable_Operation('Cannot extract the archive.');
+            }
 
         }
 
@@ -113,7 +124,7 @@
             if( $response === false ){
                 throw new Sns_Exception_DB_Error();
             }
-            $backupFile = SNS_BACKUPS_PATH.$backup_data->filename.'.tar';
+            $backupFile = SNS_BACKUPS_PATH.$backup_data->filename.'.zip';
             if( file_exists( $backupFile ) && !unlink( $backupFile ) ){
                 Sns_Log::log_msg( 'Cannot delete the file '.$backupFile );
             }
@@ -131,7 +142,7 @@
             if( $response === false ){
                 throw new Sns_Exception_DB_Error();
             }
-            $backupFile = SNS_BACKUPS_PATH.$filename.'.tar';
+            $backupFile = SNS_BACKUPS_PATH.$filename.'.zip';
             if( is_file( $backupFile ) && !unlink( $backupFile ) ){
                 throw new Sns_Exception_Unavailable_Operation( 'Cannot delete the file '.$backupFile );
             }
@@ -239,7 +250,7 @@
                                  </td>
                                  <td>
                                      <button type="button" class="btn btn-primary btn-restore sns-action" <?php echo $disabled; ?> data-backup_id="<?php echo $item->id; ?>">Restore</button>
-                                     <a href="<?php echo SNS_BACKUPS_URL.$item->filename.'.tar'; ?>"><button type="button" class="btn btn-default btn-download sns-action" <?php echo $disabled; ?> data-backup_id="<?php echo $item->id; ?>">Download</button></a>
+                                     <a href="<?php echo SNS_BACKUPS_URL.$item->filename.'.zip'; ?>"><button type="button" class="btn btn-default btn-download sns-action" <?php echo $disabled; ?> data-backup_id="<?php echo $item->id; ?>">Download</button></a>
                                      <button type="button" class="btn btn-danger btn-delete sns-action" <?php echo $disabled; ?> data-backup_id="<?php echo $item->id; ?>"><span class="glyphicon glyphicon-remove"></span></button>
                                  </td>
                              </tr>

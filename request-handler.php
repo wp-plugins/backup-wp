@@ -2,6 +2,7 @@
 
     require_once( dirname(__FILE__).DIRECTORY_SEPARATOR.'sns-config.php' );
 
+    Sns_Error_Handler::init();
     Sns_Exception_Handler::init();
 
     function sns_send_response( $result ){
@@ -43,23 +44,13 @@
             Sns_Log::log_action('Backing up', SNS_LOG_END);
 
             $skipped_files = '';
-            if( !empty( $warns['too_long_filename'] ) || !empty( $warns['utf8_filename'] ) ){
+            if( !empty( $warns['not_readable'] ) ){
                 $skipped_files .= '*********WARNING**********'.PHP_EOL;
-                if( !empty( $warns['too_long_filename'] )){
-                    $skipped_files .= 'The following filenames are too long and were excluded from backup package'.PHP_EOL;
-                    $i = 1;
-                    foreach( $warns['too_long_filename'] as $file ){
-                        $skipped_files .= $i.'. '.$file.PHP_EOL;
-                        $i++;
-                    }
-                }
-                if( !empty( $warns['utf8_filename'] ) ){
-                    $skipped_files .= 'The following filenames have utf-8 encoding and were excluded from backup package'.PHP_EOL;
-                    $i = 1;
-                    foreach( $warns['utf8_filename'] as $file ){
-                        $skipped_files .= $i.'. '.$file.PHP_EOL;
-                        $i++;
-                    }
+                $skipped_files .= 'The following files are not readable and were excluded from backup package'.PHP_EOL;
+                $i = 1;
+                foreach( $warns['not_readable'] as $file ){
+                    $skipped_files .= $i.'. '.$file.PHP_EOL;
+                    $i++;
                 }
                 Sns_Log::log_msg( $skipped_files );
             }
@@ -147,12 +138,12 @@
             throw new Sns_Exception_Unavailable_Operation('There is an existing active process.Please wait.');
         }
         $uname = date('m_d-H_i_s');
-        $file_dir = dirname(__FILE__).SNS_DS.'sns_backup-external-'.$uname.'.tar';
+        $file_dir = dirname(__FILE__).SNS_DS.'sns_backup-external-'.$uname.'.zip';
         try{
-            if( !empty( $_FILES ) && isset( $_FILES['backup_file']) && $_FILES['backup_file']['type'] == 'application/x-tar' ){
+            if( !empty( $_FILES ) && isset( $_FILES['backup_file']) && ($_FILES['backup_file']['type'] == 'application/zip' || $_FILES['backup_file']['type'] == 'application/octet-stream' ) ){
                 $backup_file = $_FILES['backup_file'];
                 $extension = substr( basename($backup_file['name']) , -4 );
-                if( $extension == '.tar' ){
+                if( $extension == '.zip' ){
                     if( !move_uploaded_file( $backup_file['tmp_name'] , $file_dir ) ){
                         throw new Sns_Exception_Unavailable_Operation( 'Cannot move uploaded file' );
                     }else{
@@ -187,7 +178,7 @@
             Sns_State::update( $stateData );
             try{
                 $uname = date('m_d-H_i_s');
-                $file_dir = dirname(__FILE__).SNS_DS.'sns_backup-external-'.$uname.'.tar';
+                $file_dir = dirname(__FILE__).SNS_DS.'sns_backup-external-'.$uname.'.zip';
                 if( !file_exists($file_dir) ){
                     throw new Sns_Exception_Not_Found( 'File not found' );
                 }

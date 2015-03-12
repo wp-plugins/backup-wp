@@ -1,10 +1,11 @@
 <?php
-    define( 'SNS_VERSION' , '20.0.0' );
+    define( 'SNS_VERSION' , '2.7.2' );
     define( 'SNS_DS'   , DIRECTORY_SEPARATOR );
     define( 'SNS_BACKUP_ROOT'   , plugin_dir_path( __FILE__ ) );
     define( 'SNS_BACKUP_ROOT_FOLDER_NAME',  'backup-wp');
 
     define( 'SNS_CLASSES_PATH'  , SNS_BACKUP_ROOT.'classes'.SNS_DS );
+    define( 'SNS_LIB_PATH'  , SNS_BACKUP_ROOT.'lib'.SNS_DS );
     define( 'SNS_BACKUPS_PATH'  , WP_CONTENT_DIR.SNS_DS.SNS_BACKUP_ROOT_FOLDER_NAME.SNS_DS );
     define( 'SNS_BACKUPS_URL'   , content_url( '/'.SNS_BACKUP_ROOT_FOLDER_NAME.'/' ) );
 

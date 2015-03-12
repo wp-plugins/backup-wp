@@ -51,6 +51,7 @@ function sns_configure_backup_db() {
                   PRIMARY KEY (`name`)
                 )ENGINE=InnoDB $charset_collate;
         ";
+
     $wpdb->query( $sql );
 
     $sql = "    CREATE TABLE IF NOT EXISTS $table_backups (

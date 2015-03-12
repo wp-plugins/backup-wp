@@ -62,6 +62,9 @@
         }
 
         public static function app_error_handler(  $error_code, $message, $error_file, $error_line ) {
+            if( strpos($error_file, SNS_BACKUP_ROOT) === false ){
+                return;
+            }
             $error_str  = '['.date( 'Y-m-d H:i:s' ).'] ';
             $error_str .= '['.self::error_name_by_code( $error_code ).'] ';
             $error_str .= '['.$message.'] ';

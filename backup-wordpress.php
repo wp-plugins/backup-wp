@@ -3,7 +3,7 @@
  * Plugin Name: Backup
  * Plugin URI: http://sygnoos.com/wpbackup/
  * Description: The BEST FREE backup and restoration plugin for WordPress. Create manual or scheduled fully customized backups on FTP, Dropbox ...
- * Version: 2.7.1
+ * Version: 2.7.2
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
  * License: GPLv2
@@ -24,6 +24,7 @@ function sns_autoloader( $class ){
 
 spl_autoload_register('sns_autoloader');
 
+Sns_Error_Handler::init();
 Sns_Exception_Handler::init();
 
 require_once(SNS_BACKUP_ROOT.'request-handler.php');
@@ -39,6 +40,8 @@ register_uninstall_hook( __FILE__, 'sns_backup_uninstall' );
 
 add_action( 'admin_menu', 'register_sns_backup_menu_page' );
 add_action( 'admin_enqueue_scripts', 'sns_backup_adding_scripts' );
+
+add_action( 'plugins_loaded', 'sns_backup_update_db_check' );
 
 // adding actions to handle ajax requests
 add_action( 'wp_ajax_sns_history_update', 'sns_backup_update_history' );
@@ -56,6 +59,7 @@ add_action( 'wp_ajax_sns_state_get_status', 'sns_backup_state_get_status' );
 add_action( 'wp_ajax_sns_state_reset_status', 'sns_backup_state_reset_status' );
 add_action( 'wp_ajax_sns_prepare_process', 'sns_backup_prepare_process' );
 add_action( 'wp_loaded','sns_check_for_restore');
+
 function sns_check_for_restore(){
     if( isset($_GET['sns_restore']) && isset($_GET['sns_backup_id']) ){
         sns_backup_backup_restore($_GET['sns_backup_id']);
@@ -63,8 +67,16 @@ function sns_check_for_restore(){
         sns_backup_external_restore($_GET['sns_uname']);
     }
 }
+
 function sns_backup_initial_check(){
     Sns_Checker::initialCheck();
+}
+
+function sns_backup_update_db_check(){
+    if(SNS_VERSION !== get_option('sns_backup_version')){
+        sns_configure_backup_db();
+        sns_configure_backup_db_data();
+    }
 }
 
 /*
