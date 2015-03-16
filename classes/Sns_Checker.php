@@ -2,9 +2,6 @@
     class Sns_Checker {
 
         public static function check($onlyExtensions = false){
-            if( !extension_loaded('Phar') || !class_exists('PharData') ){
-                throw new Sns_Exception_Not_Found('PHP Phar extension is not loaded.');
-            }
             if (!extension_loaded('mbstring')) {
 				throw new Sns_Exception_Not_Found('PHP mbstring extension is not loaded.');
 			}

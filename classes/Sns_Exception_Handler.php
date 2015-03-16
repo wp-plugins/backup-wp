@@ -126,20 +126,6 @@ class Sns_Exception_Handler {
 
     }
 
-    private static function phar_error(){
-
-        header('HTTP/1.1 500 Internal Server Error');
-        if (  self::xml_http_request() ) {
-            $result = new stdClass();
-            $result->status = 'PHAR_ERROR';
-            sns_send_response( $result );
-        }
-        else {
-            Sns_Log::log_msg('Phar error');
-        }
-
-    }
-
     public static function log( $ex ){
         Sns_Log::log_exception( get_class( $ex ) , $ex->getMessage() , $ex->getFile() , $ex->getLine()  );
     }
@@ -170,11 +156,6 @@ class Sns_Exception_Handler {
 
         if( ( $ex instanceof Sns_Exception_DB_Error ) ) {
             self::db_error();
-            return true;
-        }
-
-        if( ( $ex instanceof PharException ) ) {
-            self::phar_error();
             return true;
         }
 
