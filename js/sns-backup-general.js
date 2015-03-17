@@ -564,7 +564,7 @@
             filters : {
                 max_file_size:$("#sns-max-filesize").val(),
                 mime_types: [
-                    {title : "tar files", extensions : "tar"}
+                    {title : "zip files", extensions : "zip"}
                 ]
             },
 

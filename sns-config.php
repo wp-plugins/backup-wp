@@ -1,5 +1,5 @@
 <?php
-    define( 'SNS_VERSION' , '2.7.2' );
+    define( 'SNS_VERSION' , '2.7.3' );
     define( 'SNS_DS'   , DIRECTORY_SEPARATOR );
     define( 'SNS_BACKUP_ROOT'   , plugin_dir_path( __FILE__ ) );
     define( 'SNS_BACKUP_ROOT_FOLDER_NAME',  'backup-wp');
