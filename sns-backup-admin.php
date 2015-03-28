@@ -51,7 +51,7 @@
                                 </div>
                                 <div id="settings-tab-notifications">
                                     <?php
-                                        Sns_Notification::draw();
+                                    Sns_Notification::draw();
                                     ?>
                                 </div>
                                 <div id="settings-tab-cloud">
@@ -78,6 +78,9 @@
                                     </div>
                                     <div class="cb"></div>
                                     <textarea id="log-content"><?php Sns_Log::print_log(); ?></textarea>
+                                    <label class="checkbox-inline sns-report-block">
+                                        <input id="sns-reporting" type="checkbox" <?php echo (get_option('sns_backup_report_log') == "1")?' checked="checked" ':'';?>>Automatically report logs
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -85,11 +88,11 @@
                 </div>
             </div>
             <?php
-                $uploadSize = @ini_get('upload_max_filesize');
-                $uploadSize = (false === $uploadSize)?0:sns_return_bytes($uploadSize);
+            $uploadSize = @ini_get('upload_max_filesize');
+            $uploadSize = (false === $uploadSize)?0:sns_return_bytes($uploadSize);
 
-                $postSize = @ini_get('post_max_size');
-                $postSize = (false === $postSize)?0:sns_return_bytes($postSize);
+            $postSize = @ini_get('post_max_size');
+            $postSize = (false === $postSize)?0:sns_return_bytes($postSize);
             ?>
             <input id="sns-max-filesize" type="hidden" value="<?php echo min($uploadSize, $postSize); ?>">
             <!--            <a target="_blank" href="--><?php //echo SNS_BACKUP_URL.'/terms.txt'; ?><!--" class="fr terms">By using "Backup" plugin you're agreeing these terms</a>-->

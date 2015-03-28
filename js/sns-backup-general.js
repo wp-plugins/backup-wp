@@ -617,7 +617,11 @@
                         uploadResponse = JSON.parse( err.response );
                         $.processResult(uploadResponse);
                     }else{
-                        alert(err.message);
+                        if(err.code == '-600'){
+                            alert('The size of the uploaded file is greater than allowed.Check your server settings.');
+                        }else{
+                            alert(err.message);
+                        }
                     }
                 }
             }
@@ -718,6 +722,21 @@
         $history.configureExternalRestore();
 
         $state.startPoll();
+
+        $("#sns-reporting").click(function(){console.log('blabla');
+            var sendData = {action: 'sns_save_reporting'};
+            if($(this).attr('checked') == 'checked'){
+                sendData.report_log = 1;
+            }
+            $.ajax ( {
+                type		:	'get',
+                data        :   sendData,
+                url			: 	ajaxurl,
+                error:function( result ) {
+                    $.processResult( JSON.parse(result.responseText) );
+                }
+            } );
+        });
 
     });
 

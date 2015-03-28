@@ -1,5 +1,5 @@
 <?php
-    define( 'SNS_VERSION' , '2.7.3' );
+    define( 'SNS_VERSION' , '2.7.4' );
     define( 'SNS_DS'   , DIRECTORY_SEPARATOR );
     define( 'SNS_BACKUP_ROOT'   , plugin_dir_path( __FILE__ ) );
     define( 'SNS_BACKUP_ROOT_FOLDER_NAME',  'backup-wp');
@@ -19,6 +19,7 @@
     define( 'SNS_JS_URL'        , SNS_BACKUP_URL.'/js' );
 
     define( 'SNS_PRO_URL' , 'http://sygnoos.com/wpbackup/' );
+    define( 'SNS_API_URL' , 'https://sygnoos.com/tms/api/' );
 
     define( 'SNS_EMAIL_FILE_MAX_SIZE' , 18*1024*1024 ); // 18Mb
 

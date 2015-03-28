@@ -178,7 +178,7 @@
 }
 
 #backup-main-block .settings-item-middle{
-   margin-left: 29px;
+    margin-left: 29px;
 }
 
 #backup-main-block .ui-tabs{
@@ -290,4 +290,8 @@
 
 #backup-main-block #progressbar{
     position: relative;
+}
+
+#backup-main-block .sns-report-block {
+    margin-top: 10px;
 }

@@ -3,7 +3,7 @@
  * Plugin Name: Backup
  * Plugin URI: http://sygnoos.com/wpbackup/
  * Description: The BEST FREE backup and restoration plugin for WordPress. Create manual or scheduled fully customized backups on FTP, Dropbox ...
- * Version: 2.7.3
+ * Version: 2.7.4
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
  * License: GPLv2
@@ -58,6 +58,7 @@ add_action( 'wp_ajax_sns_log_empty', 'sns_backup_log_empty' );
 add_action( 'wp_ajax_sns_state_get_status', 'sns_backup_state_get_status' );
 add_action( 'wp_ajax_sns_state_reset_status', 'sns_backup_state_reset_status' );
 add_action( 'wp_ajax_sns_prepare_process', 'sns_backup_prepare_process' );
+add_action( 'wp_ajax_sns_save_reporting', 'sns_backup_save_reporting' );
 add_action( 'wp_loaded','sns_check_for_restore');
 
 function sns_check_for_restore(){
@@ -69,6 +70,12 @@ function sns_check_for_restore(){
 }
 
 function sns_backup_initial_check(){
+    if( get_option('sns_backup_version') === false){
+        if(get_option('sns_backup_report_log') === false){
+            add_option('sns_backup_report_log',1);
+        }
+//        Sns_Log::report('install');
+    }
     Sns_Checker::initialCheck();
 }
 
@@ -88,6 +95,7 @@ function sns_backup_deactivate(){
 }
 
 function sns_backup_uninstall(){
+//    Sns_Log::report('uninstall');
     //drop sns backup plugins tables
     global $wpdb;
     $table = SNS_DB_PREFIX.'settings_destinations';
@@ -107,6 +115,7 @@ function sns_backup_uninstall(){
     }
 
     delete_option('sns_backup_version');
+    delete_option('sns_backup_report_log');
 }
 
 function register_sns_backup_menu_page(){

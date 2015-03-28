@@ -160,7 +160,7 @@
                 RecursiveIteratorIterator::CHILD_FIRST
             );
             if( !empty( $exclude ) ){
-                $files = new CallbackFilterIterator($files , function ($file) use ($exclude) {
+                $files = new Sns_Callback_Filter_Iterator($files , function ($file) use ($exclude) {
                     foreach( $exclude as $excludeFile ){
                         if( strpos( $file, $excludeFile ) !== false ){
                             return false;
