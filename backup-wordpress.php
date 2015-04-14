@@ -59,6 +59,7 @@ add_action( 'wp_ajax_sns_state_get_status', 'sns_backup_state_get_status' );
 add_action( 'wp_ajax_sns_state_reset_status', 'sns_backup_state_reset_status' );
 add_action( 'wp_ajax_sns_prepare_process', 'sns_backup_prepare_process' );
 add_action( 'wp_ajax_sns_save_reporting', 'sns_backup_save_reporting' );
+add_action( 'wp_ajax_sns_review_off', 'sns_backup_sns_review_off' );
 add_action( 'wp_loaded','sns_check_for_restore');
 
 function sns_check_for_restore(){
@@ -116,6 +117,7 @@ function sns_backup_uninstall(){
 
     delete_option('sns_backup_version');
     delete_option('sns_backup_report_log');
+    delete_option('sns_backup_review_off');
 }
 
 function register_sns_backup_menu_page(){
@@ -143,6 +145,7 @@ function sns_backup_adding_scripts( $hook ) {
     wp_register_style('sns-backup-jquery-ui-style', SNS_CSS_URL.'/jquery-ui.min.css');
     wp_enqueue_style('sns-backup-jquery-ui-style');
 
+    wp_enqueue_script( 'sns-raty-script', SNS_JS_URL.'/jquery.raty.min.js', array('jquery') );
     wp_enqueue_script( 'sns-general-script', SNS_JS_URL.'/sns-backup-general.js', array('jquery') );
 
     wp_register_script('jquery-ui-tabs', includes_url('js/jquery/ui/jquery.ui.tabs.min.js'));

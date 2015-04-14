@@ -295,3 +295,17 @@
 #backup-main-block .sns-report-block {
     margin-top: 10px;
 }
+
+#backup-main-block #sns-rate {
+    width: 140px!important;
+    margin: 0 auto;
+}
+
+#backup-main-block #sns-review-box .modal-title {
+    text-align: center;
+}
+
+#backup-main-block #sns-review-box .modal-content {
+    width: 354px;
+    margin: 0 auto;
+}

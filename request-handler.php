@@ -317,3 +317,12 @@ function sns_backup_save_reporting(){
     }
     die();
 }
+
+function sns_backup_sns_review_off(){
+    if(get_option('sns_backup_review_off') === false){
+        add_option('sns_backup_review_off', 1);
+    }
+    $result = new stdClass();
+    $result->status = 'OK';
+    sns_send_response($result);
+}

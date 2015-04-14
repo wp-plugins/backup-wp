@@ -119,6 +119,7 @@
             $state.reset();
             if( data.type == $state.TYPE_BACKUP ){
                 $.snsToast('Backed up!' , true);
+                $state.review();
                 if( $state.backupProgress == null ){
                     $state.enableActions();
                 }
@@ -183,6 +184,7 @@
                     $state.backupProgress = null;
                     if( $state.currentStatus == $state.FINISHED ){
                         $.snsToast('Backed up!' , true);
+                        $state.review();
                     }else if( $state.currentStatus == $state.FAILED ){
                         $.snsToast('Failed!' , true);
                     }else{
@@ -227,6 +229,12 @@
             });
         }
 
+    };
+
+    $state.review = function(){
+        if($("#sns-review-off").val() != 1){
+            $("#sns-review-box").modal('show');
+        }
     };
 
     $manual.save = function(){
@@ -672,7 +680,39 @@
         $(window).load(function(){
             $state.enableActions();
         });
-
+        $("#sns-review-box").modal({show:false});
+        $("div#sns-rate").raty({
+            number:		5,
+            start:  5,
+            starOn: 'star-on.png',
+            starOff: 'star-off.png',
+            path: $("#sns-image-path").val(),
+            width: 200
+        });
+        $("#sns-review-btn").click(function(){
+            $("#sns-review-box").modal('hide');
+            window.open('https://wordpress.org/support/view/plugin-reviews/backup-wp?rate='+$("#sns-rate-score").val()+'#postform', '_blank');
+        });
+        $("#sns-dont-ask, #sns-review-btn").click(function(){
+            var sendData = {action: 'sns_review_off'};
+            $.ajax ( {
+                type		:	'get',
+                data        :   sendData,
+                url			: 	ajaxurl,
+                dataType	: 	'json',
+                success		: 	function( result ) {
+                    if(result.status == 'OK'){
+                        $("#sns-review-off").val(1);
+                        $("#sns-review-box").modal('hide');
+                    }else{
+                        $.processResult( JSON.parse(result.responseText) );
+                    }
+                },
+                error:function( result ) {
+                    $.processResult( JSON.parse(result.responseText) );
+                }
+            } );
+        });
         $("#backup-main-content #settings-tabs").tabs();
         $("#backup-main-content #menu-tabs").tabs({
             activate: function(event ,ui){

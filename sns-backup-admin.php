@@ -18,8 +18,8 @@
                         <div class="menu-content">
                             <form class="manual-form" autocomplete="off" role="form" action="">
                                 <?php
-                                $destination = new Sns_Destination( Sns_Backup::BACKUP_MODE_MANUAL );
-                                $destination->draw();
+                                    $destination = new Sns_Destination( Sns_Backup::BACKUP_MODE_MANUAL );
+                                    $destination->draw();
                                 ?>
                                 <div class="separator"></div>
                                 <div class="cb"></div>
@@ -96,6 +96,26 @@
             ?>
             <input id="sns-max-filesize" type="hidden" value="<?php echo min($uploadSize, $postSize); ?>">
             <!--            <a target="_blank" href="--><?php //echo SNS_BACKUP_URL.'/terms.txt'; ?><!--" class="fr terms">By using "Backup" plugin you're agreeing these terms</a>-->
+        </div>
+        <div id="sns-review-box" class="modal fade dn">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Leave a review</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="sns-rate"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="sns-dont-ask" type="button" class="btn btn-default">Don't ask again</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Ask me later</button>
+                        <button id="sns-review-btn" type="button" class="btn btn-primary">Review</button>
+                    </div>
+                    <input type="hidden" value="<?php echo SNS_BACKUP_URL.'/images/'; ?>" id="sns-image-path" />
+                    <input type="hidden" value="<?php echo (get_option('sns_backup_review_off') === false)?0:1; ?>" id="sns-review-off" />
+                </div>
+            </div>
         </div>
     </div>
 </div>
