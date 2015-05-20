@@ -106,7 +106,7 @@ class Sns_Backup {
 
         foreach( $items as $name => $path ){
             if( $name == Sns_Option::DB ){
-                $sql_file = 'wp_dump.sql';
+                $sql_file = SNS_BACKUPS_PATH.'wp_dump.sql';
                 Sns_Log::log_action('Exporting DB');
                 Sns_Backup::export_db( $sql_file );
                 Sns_Log::log_action('Exporting DB' , SNS_LOG_END);
@@ -120,7 +120,7 @@ class Sns_Backup {
             }
             Sns_Log::log_action('Backup item - '.$name);
             $itemZip = new Zip();
-            $itemZip->setZipFile($name.'.zip');
+            $itemZip->setZipFile(SNS_BACKUPS_PATH.$name.'.zip');
             $path = realpath( $path );
             $iterator = new RecursiveIteratorIterator(
                 new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)
@@ -152,11 +152,11 @@ class Sns_Backup {
                 }
             }
             $itemZip->finalize();
-            $stream = @fopen($name.'.zip', 'rb');
+            $stream = @fopen(SNS_BACKUPS_PATH.$name.'.zip', 'rb');
             if ($stream) {
                 $zip->addLargeFile($stream, $name.'.zip');
             }
-            @unlink($name.'.zip');
+            @unlink(SNS_BACKUPS_PATH.$name.'.zip');
             Sns_Log::log_action('Backup item - '.$name, SNS_LOG_END);
         }
 
@@ -274,14 +274,16 @@ class Sns_Backup {
         global $wpdb;
 
         $export_str = "-- Wordpress database dump --\n";
-
+        Sns_Log::log_action('Fetching tables list');
         $query = "SHOW TABLES";
         $tables = $wpdb->get_results( $query , ARRAY_A );
         if( $tables === false ){
             throw new Sns_Exception_DB_Error( $query );
         }
+        Sns_Log::log_action('Fetching tables list', SNS_LOG_END);
         foreach ( $tables as $db_item ) {
             $table = current( $db_item );
+            Sns_Log::log_action('Fetching table - '.$table);
             $query = "SHOW CREATE TABLE " . $table;
             $create = $wpdb->get_var( $query , 1 );
             if( $create === false ){
@@ -326,6 +328,10 @@ class Sns_Backup {
                         }
                         $cols = substr( $cols , 1 );
                         $export_str .= "INSERT INTO `" . $table . "` ( " . $cols . " ) VALUES ( " . implode( ", ", $entry ) . " );\n";
+                        if ( file_put_contents($sql_file ,  $export_str, FILE_APPEND) === false ){
+                            throw new Sns_Exception_Unavailable_Operation( 'Cannot write in '.$sql_file );
+                        }
+                        $export_str = '';
                     }
 
                     $offset += 1000;
@@ -351,11 +357,11 @@ class Sns_Backup {
                 if ( false !== $myisam )
                     $export_str .=  "\n --!40000 ALTER TABLE `".$table."` ENABLE KEYS ;";
             }
+            if ( file_put_contents($sql_file ,  $export_str, FILE_APPEND) === false ){
+                throw new Sns_Exception_Unavailable_Operation( 'Cannot write in '.$sql_file );
+            }
+            $export_str = '';
             Sns_Log::log_action('Fetching table - '.$table, SNS_LOG_END);
-        }
-
-        if ( file_put_contents($sql_file ,  $export_str) === false ){
-            throw new Sns_Exception_Unavailable_Operation( 'Cannot write in '.$sql_file );
         }
     }
 
