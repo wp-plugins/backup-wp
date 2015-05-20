@@ -3,7 +3,7 @@
  * Plugin Name: Backup
  * Plugin URI: http://sygnoos.com/wpbackup/
  * Description: The BEST FREE backup and restoration plugin for WordPress. Create manual or scheduled fully customized backups on FTP, Dropbox ...
- * Version: 2.7.4
+ * Version: 2.7.5
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
  * License: GPLv2
