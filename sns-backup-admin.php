@@ -62,8 +62,15 @@
                                     </div>
                                     <div id="ftp-block">
                                         <?php
-                                        $ftp = new Sns_Ftp();
-                                        $ftp->draw();
+                                        try
+                                        {
+                                            $ftp = new Sns_Ftp();
+                                            $ftp->draw();
+                                        }
+                                        catch (Exception $e)
+                                        {
+
+                                        }
                                         ?>
                                     </div>
                                 </div>
