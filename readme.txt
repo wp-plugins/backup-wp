@@ -30,14 +30,14 @@ Wordpress Backup provides
 * Worpress Backup works in the background, rather than in the browser mode - This means you don't have to stop all other work waiting for large databases to get backed up - ( WordPress Backup F2 )
 * Backup can be used for manual backup of the data, and is surprisingly fast and easy - ( WordPress Backup F3 )
 * Backup restores all the backup files, including the history records using a highly intuitive one click restoration - ( WordPress Backup F4 )
-* Backup stores the backups on your Dropbox account - ( WordPress Backup F5 )
-* Backup stores the backups on your FTP server - ( WordPress Backup F6 )
-* Automatization of the data backup is easy with WordPress Backup - ( WordPress Backup F7 )
-* You can also customize and optimize your backup using this nifty plugin - ( WordPress Backup F8 )
-* WordPress Backup keeps you constantly notified about the whole process, so that you know exactly what's happening and what to expect - ( WordPress Backup F9 )
-* You may trust WordPress Backup to support you in an emergency, such as hacking of the website or data theft - ( WordPress Backup F10 )
-* The WordPress Backup has a very user friendly interface, which makes using it a pleasant and hassle free experience - ( WordPress Backup F11 )
-* The auto schedule option that Backup comes with allows you to schedule backups at regular intervals. You wont have to do much as the whole process is fully automatic and runs in the background, and notifies you about every development - ( WordPress Backup F12 )
+* Backup stores the backups on your FTP server - ( WordPress Backup F5 )
+* The WordPress Backup has a very user friendly interface, which makes using it a pleasant and hassle free experience - ( WordPress Backup F6 )
+* Backup stores the backups on your Dropbox account - ( WordPress Backup F7 ) (PRO)
+* Automatization of the data backup is easy with WordPress Backup - ( WordPress Backup F8 ) (PRO)
+* You can also customize and optimize your backup using this nifty plugin - ( WordPress Backup F9 ) (PRO)
+* WordPress Backup keeps you constantly notified about the whole process, so that you know exactly what's happening and what to expect - ( WordPress Backup F10 ) (PRO)
+* You may trust WordPress Backup to support you in an emergency, such as hacking of the website or data theft - ( WordPress Backup F11 ) (PRO)
+* The auto schedule option that Backup comes with allows you to schedule backups at regular intervals. You wont have to do much as the whole process is fully automatic and runs in the background, and notifies you about every development - ( WordPress Backup F12 ) (PRO)
 
 While the internet has transformed the lives hundreds of millions of people around the world, made it easier for them to shop, seek information, meet friends, communicate and work, it is an unfortunate fact that the internet is also the playground of hackers. It is believed that tens of thousands of websites get hacked every day. Yes, a strong password is an effective barrier, but not effective enough.
 
