@@ -1,31 +1,61 @@
 === Backup ===
 Contributors: Backup By Sygnoos, Sygnoos
 Donate link: http://sygnoos.com/wpbackup/
-Tags: dropbox, backup, dropbox backup, database, file, full backup, manage, sicherung, database backup, file backup, page backup, page, web, web backup, web page, synchronize, clone, duplicate, move, web page backup, site, site backup, back up, cloud, Cloud Files, cloud backup, db backup, dump, german, migrate, multisite, Russian, schedule, storage, time, upload, data bank, zip, archive, backups, restore, db, recover, recovery
+Tags: backup, mysql, database, dump, db, website, duplicate, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup, full backup, transfer, save, security, webdav backup, backup pages, backup plugins, backup posts, backup plugin, recover, backup page
 Requires at least: 3.9
 Tested up to: 4.2.1
 Stable tag: 2.7.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-FTP Backup & Restore Plugin to create FTP Full Backup (Files + Database) or Restore of your Web Page
+The BEST FREE backup and restoration plugin for WordPress. Create manual or scheduled fully customized backups on FTP, Dropbox ...
 
 == Description ==
 
-Supports WordPress Backup and Restore to/from Local Storage or upload Backups to FTP.
+#### Wordpress Backup
 
-* Local Backup: create the Full Backup of Web Page (Files + Database) and store this at Local Storage of the Site;
-* FTP Backup: create the Full Backup (Files + Database) of Web Page at Local Storage and upload this to FTP;
-* Local Restore: restoration from Local backup at your web page;
-* FTP Restore: restoration from FTP backup;
-* With "FTP backup & restore" plugin you can backup and restore WooCommerce shop inkl. Database with products;
-* Administrate ALL of Backups for ALL of your sites from one place Sygnoos-account (FULLY FREE);
+* [Get WordPress Backup PRO package](http://sygnoos.com/wpbackup/)
 
+MAKE SURE YOUR FILES & DATABASE ARE SAFE. ROLLBACK YOUR DATA WHENEVER NEEDED.
 
-You can create your Sygnoos account for central Backup administration at http://www.Sygnoos.com 
-Sygnoos account is FULLY FREE.
+https://www.youtube.com/watch?v=TyYEI0Bm24c
 
-If you need help with the plugin or you want to report a bug please refer to http://www.sygnoos.com/support/
+The WordPress Backup works perfectly to create a customizable backup of your WordPress site. When you use the WordPress Backup, you are guaranteed that your data is always safe, and when needed can be restored in its original form, at the time of your choice.  WordPress Backup allows you to either manually or automatically create a customized or fully optimized backup of a website  which has been built using WordPress.
+
+WordPress is the premier content management system used globally to design websites and blogs, a large percentage of websites and blogs in the world are based on WordPress - which makes it all the more important to have a perfect system for backing up the data stored in files and databases used in a WordPress site, which can be easily restored at a later point of time. The WordPress Backup plugin is just perfect for this purpose as it backs up all the files, plugins, themes and databases on your WordPress website in different locations - which provides an extra data security.
+
+Wordpress Backup provides
+
+* Backup your Wordpress Website or Blog - ( WordPress Backup F1 )
+* Worpress Backup works in the background, rather than in the browser mode - This means you don't have to stop all other work waiting for large databases to get backed up - ( WordPress Backup F2 )
+* Backup can be used for manual backup of the data, and is surprisingly fast and easy - ( WordPress Backup F3 )
+* Backup restores all the backup files, including the history records using a highly intuitive one click restoration - ( WordPress Backup F4 )
+* Backup stores the backups on your FTP server - ( WordPress Backup F5 )
+* The WordPress Backup has a very user friendly interface, which makes using it a pleasant and hassle free experience - ( WordPress Backup F6 )
+* Backup stores the backups on your Dropbox account - ( WordPress Backup F7 ) (PRO)
+* Automatization of the data backup is easy with WordPress Backup - ( WordPress Backup F8 ) (PRO)
+* You can also customize and optimize your backup using this nifty plugin - ( WordPress Backup F9 ) (PRO)
+* WordPress Backup keeps you constantly notified about the whole process, so that you know exactly what's happening and what to expect - ( WordPress Backup F10 ) (PRO)
+* You may trust WordPress Backup to support you in an emergency, such as hacking of the website or data theft - ( WordPress Backup F11 ) (PRO)
+* The auto schedule option that Backup comes with allows you to schedule backups at regular intervals. You wont have to do much as the whole process is fully automatic and runs in the background, and notifies you about every development - ( WordPress Backup F12 ) (PRO)
+
+While the internet has transformed the lives hundreds of millions of people around the world, made it easier for them to shop, seek information, meet friends, communicate and work, it is an unfortunate fact that the internet is also the playground of hackers. It is believed that tens of thousands of websites get hacked every day. Yes, a strong password is an effective barrier, but not effective enough.
+
+Hackers these days are highly sophisticated and they are capable of finding their way around most of the firewalls built by you around your website data. So many owners of WordPress websites have complained about losing precious data to hacking, which often results in the crashing of their websites. The only way to remain secure is to create regular backup of your site, to ensure that when a problem arises, the site can be quickly restored and a semblance of normalcy is restored.
+
+This is what the WordPress Backup plugin does  - it offers an effective solution that helps you deal with an emergency situation, find quick and easy answers to your problems and get your website up and running in no time at all.  When you use the WordPress Backup, you've effectively created an insurance for yourself against the worst that the most capable hackers of the world can do to you.
+
+One of the biggest issues webmasters and website developers have is backing up the data present in the files and the database. This is because a typical website requires the creation of thousands of files and these files have to be saved at regular intervals of time. Often because of a hardware malfunction or a software crash, some or many of the files get lost - this would be about disastrous consequences for the website owners, besides laying to waste months and even years of hard work, this would effectively waste a fortune spent on the creation of the voluminous amount of data. Eventually, losing the precious data would sound the death knell for the website, over which so much blood, sweat and tears have been shed by the webmaster and his team of website developers. This is why you need to backup the website data.
+
+The WordPress Backup plugin is unique and highly effective for backing up your WordPress website. Its simple user interface has an intuitive feel to it, making the whole backup process a child's play for you - which makes it so much better than the other backup plugins available in the market.
+
+### Environment Requirements
+* Wordpress >= 3.9
+* PHP >= 5.3
+
+### If you think, that you found a bug in our <a href="http://sygnoos.com/wpbackup/">WordPress Backup</a> plugin or have any question contact us at <a href="mailto:wp-backup@sygnoos.com">wp-backup@sygnoos.com</a>.
+
+Wordpress Backup
 
 == Installation ==
 
@@ -47,6 +77,37 @@ You are done! Now you can backup your web site or setup scheduler which will aut
 5.  WordPress Backup "Notifications" page
 6.  WordPress Backup "Cloud settings" page
 6.  WordPress Backup "Log" page
+
+== Frequently Asked Questions ==
+
+**Does WordPress Backup provide support to customers?**
+
+Yes. We provide email support to resolve any backup or restore related issues. We also provide emergency support (up to 24 hours) in our <a href="http://sygnoos.com/wpbackup/">PRO package</a>.
+
+**Why I need to backup my site?**
+
+Thousands of web sites are being hacked every day. Sometimes we think, that putting strong passwords are enough to ensure good security, but unfortunately that's a required but not enough. Be sure, if you are a target of hackers, they will find a workaround to hack your site. Sometimes we add new records or delete files that explodes something. Creating regular backups is the best way to keep the site up and working. And Wordpress Backup plugin is here to help you to figure out raised problems quickly and easy in emergency situations and keep your your service up and working.
+
+**How often should I create a backup?**
+
+Weekly backups are the best option for you. Wordpress backup provides a scheduler which will care everything for you automatically based on your preferences (daily, weekly, monthly).
+
+**What does the FREE plan of WordPress Backup offer?**
+
+With our free package you can fully backup and restore your WordPress website or blog. All minimal options are available. You can also backup to an FTP server of your choice. If you want more features, you can check our other packages <a href="http://sygnoos.com/wpbackup/">here</a>.
+
+**Something is not working. What do I do?**
+
+Contact us! Depending of your server configuration something may go wrong, please don't hesitate on contacting us, we are here to help you! Our support email is: <a href="mailto:wp-backup@sygnoos.com">wp-backup@sygnoos.com</a>
+
+**Why should I choose this backup plugin?**
+
+WordPress backup is unique in it's context. It's fully functional and incredibly simple for usage. Of course we provide PRO payed version with enlarged set of features, but our FREE version provides the whole basic functionality without limitations.
+
+**How can I upgrade to Backup PRO version?**
+
+Order our WordPress Backup Pro version [here](http://sygnoos.com/wpbackup/). You can choose any plan which the best fits your needs.
+
 
 == Changelog ==
 
@@ -77,105 +138,187 @@ You are done! Now you can backup your web site or setup scheduler which will aut
 = 2.6.1 =
 *  Add Wordpress Backup plugin.
 
-== Other ==
+==Backup Instructions==
 
-= Very easy and secure Dropbox Backup and Restoration (web page restore from backup) =
+###Installation
 
-Usefull additional functions can be found at www.sygnoos.com in the User profile.
-DropBox Backup is a new plugin, so we tryed have to provide a bug-free plugin/widget. We are maintain this project.
+WARNING:
+If you are trying to install a totally new plugin (you don’t have already installed version on your WordPress site/blog), you can just follow the steps listed bellow. Otherwise, please uninstall the current plugin to prevent possible conflicts while you are trying to install a new one. After uninstalling the current version return here to continue installation (you can find the uninstallation instructions in the next chapters).
 
-Information about privacy: AFTER the user has been registered at WPAdm service AND has confirmed their registration,
-our plugin will get the minimum requirements of php and mysql configuration, version and language of wordpress.
-This data will be send to WPAdm service, to get the plugin work correctly, to extend supported configurations of user sites with wpadm-extensions and support.
-WE DO NOT COLLECT AND DO NOT STORE THE PERSONAL DATA OF USERS FROM THIS PLUGIN!
+* Download “Backup” plugin from http://sygnoos.com/wpbackup ( Backup step 1 )
+* Open your WordPress admin panel ( Backup step 2 )
+* Choose “Plugins” tab from the sidebar menu ( Backup step 3 )
+* Push “Add New” button from the top-left corner ( Backup step 4 )
+* Push “Upload Plugin” button ( Backup step 5 )
+* Push “Choose File” button ( Backup step 6 )
+* Select the "backup-wp.zip" file you just downloaded from http://sygnoos.com/wpbackup  ( Backup step 7 )
+* Press “Open” button ( Backup step 8 )
+* Now press “Install now” button and wait a little bit while the plugin is being installed ( Backup step 9 )
+* Press “Activate Plugin” button and wait a little bit wile it’s being activated ( Backup step 10 )
+* Select “Backup” option from the sidebar ( Backup step 11 )
+* YOU ARE DONE! The plugin was successfully installed.
 
-
-
-= Webpage Backup on Dropbox =
-
-For security of your sites, webs hops or online portals is backup a must. With backup from www.sygnoos.com you can secure backup and restore all your projects independent if it webpage or woocommerce shop as to make restoring from your backups. From security reasons it is impotent to schedule your backups, thereby your information or comments from your databases no go lost. Of course the more important for the security are (frequently) backups for woocommerce shops or multisite backups and there one click to restores from your backup drive. The woocommerce backups need more storage in cloud due to large files.
-But in most cases it isnâ€™t needed to make full backup. With help of our service webpage-backup.com you can select the folder or special databases that you must backup or to backup single webpage inside your hosting. But for our service it does not matter if the files are large or small, in case of the restoration it is the same. As well as for your local backup. Local backup are done on your hosting. If your hosting have enough space for backup it is ok, but it is not recommended. In most cases for storage your full backup on space of your hosting it is not enough space otherwise it is not safe enough, especially if something happen with your hosting or after some time you want to change your hosting provider. Additional if your make automate schedule backups or data base backups ever after some time the space on your backup drive will be full. For this reason the best is to use the Dropbox storage. Dropbox storage is scalable.  Of course the scheduler dropbox backup it is not a must. You can make it manually and for free, but it easy to forget and the danger to lose your backup data are big. You must not to upload your dropbox backup on your PC or desktop you can directly restoring your webpage from dropbox drive.  Independently of our service it is possible to downloading, uploading the data from the dropbox account. By dropbox backup with www.sygnoos.com you can make exclusions of folders or by restoring import archives or whole bundle of archives. By dropbox backup or wep page cloning or migration of the sites it is important that all folders have permissions to write it is the same how permission to access the folder or to uploading it. For backup on dropbox it is does not matter if your site have ssl certificate or it is normal woocommerce shop without ssl certificate the same goes for migrating or for webpage clone. For our service www.sygnoos.com it is important that our servise have permissions to the folders and to backup drive. 
-
-= Special functions =
-
-To the special functions of our webpage backup doesnâ€™t belong the migration, scheduler backup, cron backup, wpmu backup, shop backup and encryption by cloning, if you make some clone of your website or multisite clone. It is all normal functions of our plugin or service at our webpage www.sygnoos.com. The most of this tools are free of charge, especially if you do it manually. But inside our multisite tools are other addons and functions. Addons for your pages or multisite (WPMU) peges you can add inside of your service account if you want.  But for some of this function it is required to register on www.sygnoos.com. For manage of multisites or just for one page menaging, for cron and scheduled dropbox backup as for full restoration of you WooCommerce shop, webpage or multisite as well as for migration - to register it is must. It is not possible to do full restoration of webpage from dropbox backup without the WordPress site self. 
-
-= Easy backup =
-
-By draw up of our dropbox backup tools we try to do the backup or restoring ever for not experts and multisites owners, but with the same tools how for experts. For experts we have Buckup explorer where the expert can select or to do exclusion of files and webpages. As the register user you can use multiple dropbox account or create other multisite buckup drive clouds, how FTP or you can do the local backup on the site of your host. All automatically functions are inside of our service. To automatically tools belong: cron and scheduler, migrator and remote. Scheduled jobs for dropbox you can set in our calendar, it gives overview. 
-
-= Cloning, duplicate or migrate of websites =
-
-Cloning, duplicate or migrate in principal all the function a same. It gives you the possibility quickly to create site clone with as â€œtemplatesâ€ for multiple site.  This clone tool is very useful, if you have more than one webpage or, if you want to clone or duplicate your web page. With full backup of your old site or WooCommerce shop you can clone or duplicate, and create new clone of webshop or webpage with one click. All multisite backups functions are available from one dashboard of cloning tool, how multisite backup, as well as WPMU backup in the same cloud or in several cloud storages of hosting provider or just server. From same dashboard available clone restorations functions separate or in bundle, depend of your multisite backup settings. If your do so much settings you can remove not needed settings or clone of backup. The settings must be removed separately ever for multisite or clone. The backup dropbox storages must be removed separately too. Although it seems complicated to do automatic backup. With our backup plugin for backup, clone or migrate - you can make it without expert knowledge. Clone add-ons allow your easy backup or migrate your website or WPMU (multisite). "Dropbox backup" is just ultimate tool for WordPress that can worst your productivity by cloning of web pages, allowing you to do efficiently manage of cloned pages due clone or multisite installations.
-
-= Easy data restoring =
-
-For restoring your webpage (or multisite webpage) selected files from the dashboard and then select files to restore. In backup list you see the type, date and size. From the list you can remove and select appropriate restoring file. In settings your can add or remove the cloud storage.  In case of cloning you must restore your old webpage backup on other webpage. Cloning is the same how resorting but in more steps. The same bee meant for migrating of multisite and shops and there restore. With our file explorer you can match every file separately for restoration. In case of restoration only this files will be restore. You can restore one file than the next, but it easy to make restoring in bundle or directly to recover whole full backup. The restoration time depend from your hosting and upload rate as well as restoration depend from the file size witch must be restore. Scheduled restoring and recovering isnâ€™t possible, unless somebody have special inquiry on our service to do scheduled recovering. The recover from the Dropbox cloud storage take time, depend from the web site size and right permissions of the folders of your hosting provider. 
-
-= What to do if recovering failed? =
-
-First of all check the data spelling. It is most common mistake. Other common mistakes by recovering are: 
-* to recover from wrong cloud storage
-* if done alone database back up â€“ not full and you canâ€™t see the recover sites 
-* by recovering process there was internet interruption 
-* In your database are file exclusions
-* your database back up was not consistent
-* file archive of back up with a broken checksum 
-* back up or restore from damaged cloud storage
-* misspelled back up due user failed restore
-
-Large file and big size databases need more time to recover. It can take from 30 min until two hours or more, depend from the size of your back up database, but for our recovery service it doesnâ€™t matter for uploading of large files or small files. The difference between recover the large files and small is the time. After check all this figures please write a letter on our support team http://www.sygnoos.com and we will try to answer as soon as possible and to give youâ€™re the best solution how easy to recover your site.
+NOTE:
+You can find more detailed information about the plugin usage in the next chapters.
 
 
-== Frequently Asked Questions ==
+###Upgrade to PRO version
 
-= Where can I get my app key & secret? =
+WARNING:
+If you are trying to install a totally new plugin (you don’t have already installed FREE or PRO versions on your WordPress site/blog), you can just follow the steps listed bellow. Otherwise, please uninstall the current working plugin to prevent possible conflicts and then return here to continue installation (you can find the uninstallation instructions in the next chapters).
 
-You can get an API app key and secret by creating an app on the <a href="https://www.dropbox.com/developers/apps/create?app_type_checked=api" target="_blank">app creation page</a>. 
-Once you have an app created, the app key and secret will be available on the app's page on the <a href="https://www.dropbox.com/developers/apps" target="_blank">App Console</a>. 
-Note that Drop-ins have app keys but no app secrets.
+* Download “Backup PRO” plugin from http://sygnoos.com/wpbackup if you don’t have it yet ( Backup step 1 )
+* Don’t forget to uninstall the currently working plugin before starting the installation. If you start installation before uninstalling already working version, this can cause conflicts in future ( Backup step 2 )
 
-= How to restore my site from dropbox backup? =
+NOTE:
+BE VERY CAREFUL!!! If you have already created backups only on your local server, they will be deleted while you are trying to uninstall the currently installed version. Download them or store somewhere else before uninstalling the plugin.
 
-= My web page completely crashed and not available. How can I restore my web page from dropbox backup? =
+* More detailed instructions about the installation you can find in chapter called “Installation” ( Backup step 3 )
+* After plugin installation/uninstallation, don’t forget clean your browser’s cache to make sure WordPress is working properly. More detailed information about cache cleaning you can find here http://www.wikihow.com/Clear-Your-Browser's-Cache ( Backup step 4)
+* YOU ARE DONE! You’ve successfully upgraded/updated your plugin.
 
-Just login or Register at WPAdm www.sygnoos.com If your web page wasn't added and verified - just do it. Add your domain and verified this on WPAdm account.
 
-You must see all of your backups, that you have made. 
+###Uninstallation
 
-= Should I upgrade my old version of Dropbox Backup and Restore plugin? =
+NOTE:
+BE VERY CAREFUL!!! If you have already created backups only on your local server, they will be deleted while you are trying to uninstall the current working version. Download them or store somewhere else before plugin uninstallation.
 
-Yes. We recommended to update or upgrade to a newest versions.
+* Choose “Plugins” tab from the sidebar menu ( Backup step 1 )
+* Find “Backup” plugin in the plugins table ( Backup step 2 )
+* Press “Deactivate” button if the plugin is active ( Backup step 3 )
+* Press “Delete” button and wait while the plugin is being removed from the system ( Backup step 4 )
+* Press “Yes, Delete this files and data” to confirm uninstallation ( Backup step 5 )
+* YOU ARE DONE! The plugin was successfully uninstalled.
 
-= How can I manage my backups? =
 
-Manage of multiple back ups is possible from your account on webpage-backup.com
+###Manual backup creation
 
-= I use multisite WordPress and I would like to manage my backups from one place. How can I do that? =
+* Choose “Plugins” tab from the sidebar menu ( Backup step 1 )
+* Check the cloud destinations where you prefer backups to be stored ( Backup step 2 )
 
-Multisite WP can be supported too, but you have to login in your account at webpage-backup.com
+WARNING:
+If you don’t have configured cloud storages, you can find detailed information about configuration in next chapters.
 
-= Can I use the Dropbox Backup and Restore plugin to clone my website? =
+* Press blue “Backup” button ( Backup step 3 )
+* Wait while your site is being backed up ( Backup step 4 )
 
-Yes. If you have some back up, created with our Dropbox Backup and Restore plugin, then you can use it for migration or doing some clone to another place (server / web hosting).
+WARNING:
+This procedure can take a while if your site is large. It depends on your site and hosting how much will take the process.
 
-= I didn't see my back up at my Dropbox. Why? How can I find it at my Dropbox? =
+WARNING:
+While plugin is backing up your site/blog, you are not able to create another backup or restore already created backups. Wait till progress reaches to 100% to create new backups or restore already created backups.
 
-Simple check your app key and app secret, that you use it from a correct app do you created before you start make a backup.
+* Navigate to “Backup history & restore” section ( Backup step 5 ) to see just the backed up record ( Backup step 6 ), or wait a little bit while we are trying to upload the backup file to your could storage if you checked that option initially.
+* You can just download it directly from the history records ( Backup step 7 ) or you can delete that record if you don’t need it anymore ( Backup step 8 ).
+* YOU ARE DONE! The backup is ready.
 
-= Is it possible to migrate my website with your Dropbox back up tool? =
 
-Many people stay us this question and our answer is - YES! It' good possibility to use our back up plugin specially for migration of webpages. Also you can migrate your website locally. If you make a local backup, then you can download it to your PC, upload to another place and make recovery there.
+###Backup restoration
 
-= How to make a recovery of my webpage? =
+There are 2 options for restoration. Either you can restore directly from the history records or you can upload already downloaded backup file to perform restoration.
 
-Dropbox Backup and Restore plugin work autonomously. In case, if your page not available, you may use www.sygnoos.com to recovery your webpage from backup.
+A. Let’s start with restoration directly from the history records. It’s very easy to perform.
 
-= I want schedule backup. How can I schedule backup of my webpage? =
+* Navigate to “Backup history & restore” section ( Backup step 1 )
+* Hit “Restore” button of the record you wish to be restored ( Backup step 2 )
+* Wait while your system is being restored ( Backup step 3 )
+* YOU ARE DONE! The system was restored.
 
-To schedule backup of your webpage, you may use an account at www.sygnoos.com to schedule backup.
 
-= Can I make a schedule backup of my multisite WordPress? =
+B. Now let’s see how to restore from the external file.
 
-Please, see the previous question "I want schedule backup. How can I schedule backup of my webpage?".
-Generally - YES, you can create a scheduled backup, but you may sign in to account at www.sygnoos.com to make a scheduled backup.
+* Navigate to “Backup history & restore” section ( Backup step 1 )
+* Hit “Browse” button ( Backup step 2 )
+* Choose the backup file from your computer (If file is stored on your Dropbox account or FTP server, you should downloaded it on your local computer first of all) ( Backup step 3 )
+* Hit the “Restore” button ( Backup step 4 )
+* Wait while your system is being restored ( Backup step 5 )
+* YOU ARE DONE! The system was restored.
+
+
+###Scheduler configuration
+
+If you need to configure scheduler that will automatically create backups for you, follow the steps listed bellow.
+
+* Navigate to “Schedule” section ( Backup step 1 )
+* Mark scheduler as enabled ( Backup step 2 )
+* Chose how often you want to create backups ( Backup step 3 )
+* Choose the external destinations where you wish the backup files to be stored too ( Backup step 4 )
+* Finally push “Save” button ( Backup step 5 )
+* YOU ARE DONE!
+
+NOTE:
+Scheduler is ready. It will first time perform automatic backup after the duration you’ve chosen.
+
+
+###Backup options customization
+
+If you need options customization (like backup only database or files, or perform pull complete backup), then follow the steps listed bellow.
+
+* Navigate to “Settings” section ( Backup step 1 )
+* Select “Options” tab ( Backup step 2 )
+* Choose which folders/database should be included in the backup file ( Backup step 3 )
+* Choose the number of backups that you want to keep on the server (Note: the history will keep the top N recently created records on your local server) ( Backup step 4 )
+* Finally push “Save” button ( Backup step 5 )
+* YOU ARE DONE! If next time you or scheduler start to create backups, the backups will be created based on the preferences you just saved.
+
+
+###Configure notifications
+
+Do you want to get email notifications how did the backup or restore process go? Simply follow the steps listed bellow and you are done.
+
+* Navigate to “Settings” section ( Backup step 1 )
+* Select “Notifications” tab ( Backup step 2 )
+* Mark notifications as enabled ( Backup step 3 )
+* Enter the email address where you want to get notified ( Backup step 4 )
+* Finally push “Save” button ( Backup step 5 )
+* YOU ARE DONE! You will get notified about did the backup/restoration process go? .
+
+
+###Dropbox account configuration
+
+If you want to keep the backup files on your Dropbox account, you should follow the steps listed bellow to configure your account.
+
+* Navigate to “Settings” section ( Backup step 1 )
+* Select “Cloud” tab ( Backup step 2 )
+* Push “Link account” button ( Backup step 3 )
+
+NOTE:
+If you’ve already linked account, the “Link account” button will be shown as “Unlink”. To link a new account or to remove already attached account, you just need to push “Unlink” button, and the linked account will be removed.
+
+* Login on your Dropbox account if you’ve not logged in already one ( Backup step 4 )
+* Press “Allow” button to give permissions to upload the backup files on your Dropbox account ( Backup step 5 )
+* YOU ARE DONE! You can check the linked account details on “Settings” > “Cloud” section.
+
+
+###FTP account configuration
+
+If you want to keep the backup files on your FTP server, you should follow the steps listed bellow to configure your account.
+
+* Navigate to “Settings” section ( Backup step 1 )
+* Select “Cloud” tab ( Backup step 2 )
+* Fill in the FTP credential ( Backup step 3 )
+* Push “Link account” button ( Backup step 4 )
+
+NOTE:
+If you’ve already linked account, the “Link account” button will be shown as “Unlink”. To link a new account or to remove already attached account, you just need to push “Unlink” button, and the linked account will be removed.
+
+* YOU ARE DONE! Your FTP account was successfully linked.
+
+
+###Troubleshooting
+
+If you’ve faced an issue and you are not able to create backups or restore already created ones, the first thing that you can do to troubleshoot an issue by yourself, you can check the low level detailed logs to understand the root cause. To see logs you just need to follow the steps listed bellow.
+
+* Navigate to “Settings” section ( Backup step 1 )
+* Select “Log” tab ( Backup step 2 )
+* Press “Refresh” button to reload the shown logs ( Backup step 3 )
+* YOU ARE DONE! Here you’re able to see the low level detailed logs.
+
+NOTE:
+If you’re not able to discover your issue by yourself, don’t hesitate and contact us here
+wp-backup@sygnoos.com to let us help you to figure out your problems.
+
+NOTE:
+After installation/uninstallation any plugin don’t forget clean your browser’s cache to make sure your WordPress is working properly and doesn’t use temporary cached data.  More detailed information about cache cleaning you can find here http://www.wikihow.com/Clear-Your-Browser's-Cache.
+
+### Wordpress Backup
