@@ -9,7 +9,7 @@
  * License: GPLv2
  */
 
-    set_time_limit(0);
+    @set_time_limit(0);
 
     require_once( dirname(__FILE__).DIRECTORY_SEPARATOR.'sns-config.php');
     function sns_autoloader( $class ){

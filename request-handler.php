@@ -30,7 +30,7 @@ function sns_register_shutdown(){
 	}
 }
 function sns_backup_manual_backup() {
-	set_time_limit(0);
+	@set_time_limit(0);
 	register_shutdown_function('sns_register_shutdown');
 	
     try{
