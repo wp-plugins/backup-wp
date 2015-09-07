@@ -110,9 +110,7 @@ class Sns_Backup {
 	}
 
     public function backup_items( $items ){
-		$hash = $this->get_new_hash();
-        $filename = 'sns_'.get_bloginfo('name').'_'.date('Y.m.d__H_i').'_'.$hash;
-        $dir =  SNS_BACKUPS_PATH.$filename;
+		$dir =  SNS_BACKUPS_PATH.$this->filename;
 
         if (!class_exists('Zip', false)) {
             require_once SNS_LIB_PATH.'Zip.php';
@@ -184,8 +182,8 @@ class Sns_Backup {
         $zip->finalize();
         Sns_Log::log_action('Summarize item backups', SNS_LOG_END);
 
-        $this->hash = $hash;
-        $this->filename = $filename;
+        $this->hash;
+        $this->filename;
         $this->save();
         return $warns;
     }
@@ -205,7 +203,7 @@ class Sns_Backup {
 
     }
 
-    public function get_new_hash(){
+    public static function get_new_hash(){
 
         global $wpdb;
         $hash = '';

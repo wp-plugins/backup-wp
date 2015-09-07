@@ -87,14 +87,9 @@
     function sns_backup_deactivate(){
         $data = array( 'status' => Sns_State::STATUS_NONE );
         Sns_State::update( $data );
-        Sns_Schedule::on_deactivate();
     }
 
     function sns_backup_uninstall(){
-
-        //unlink dropbox account
-        $dropbox = Sns_Dropbox::getInstance();
-        $dropbox->unlinkAccount(false);
 
         //drop sns backup plugins tables
         global $wpdb;
@@ -114,9 +109,6 @@
         $wpdb->query( "DROP TABLE IF EXISTS `{$table}`" );
         $table = SNS_DROPBOX_TABLE;
         $wpdb->query( "DROP TABLE IF EXISTS `{$table}`" );
-
-        //clear schedule crons
-        Sns_Schedule::clearCrons();
 
         //delete backup files
         if( is_dir( SNS_BACKUPS_PATH ) ){
