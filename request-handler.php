@@ -19,8 +19,20 @@ function sns_backup_update_history() {
 
 }
 
+function sns_register_shutdown(){
+	$proc = Sns_State::get_status();
+	if( $proc['status'] == Sns_State::STATUS_ACTIVE ){
+		var_dump(SNS_BACKUPS_PATH.Sns_State::$currentBackupFilename.'.zip');
+		$data = array( 'status'    =>  Sns_State::STATUS_FAILED );
+		Sns_State::update( $data );	
+		$file = SNS_BACKUPS_PATH.Sns_State::$currentBackupFilename.'.zip';
+		unlink( $file );
+	}
+}
 function sns_backup_manual_backup() {
-
+    @set_time_limit(0);
+	register_shutdown_function('sns_register_shutdown');
+	
     try{
         Sns_Log::log_msg('########PROCESS STARTED########'.PHP_EOL);
         $state = Sns_State::get_status();
@@ -40,10 +52,34 @@ function sns_backup_manual_backup() {
         $destination->set_destinations( $locations );
         $destination->save();
         $backup = new Sns_Backup( Sns_Backup::BACKUP_MODE_MANUAL );
-
+		Sns_State::$currentBackupFilename = $backup->getFilename();
+		
+		$dest = 'local';
+		if (count($locations)) $dest .= ','.implode(',',array_keys($locations));
+           
+		$options = Sns_Option::get_options( true );
+		foreach( $options as $option => $data ){
+			if( $option == Sns_Option::FULL ){
+				$option_list = array(
+					$option
+				);
+				break;
+			}
+			if( $option != Sns_Option::COUNT  ){
+				$option_list []= $option;
+			}
+		}
+		$options = implode(',', array_values($option_list));
+		$engLogDecription  = '----------------------------------------------------';
+		$engLogDecription .= "\n".ucfirst($stateData['type']).": ".$options;
+		$engLogDecription .= "\nDestination: ".$dest."\n";
+		$engLogDecription .= "----------------------------------------------------\n"; 
+		
+		Sns_Log::log_msg($engLogDecription);
         Sns_Log::log_action('Backing up');
         $warns = $backup->backup();
         Sns_Log::log_action('Backing up', SNS_LOG_END);
+		Sns_Log::log_msg("\n");
 
         $skipped_files = '';
         if( !empty( $warns['not_readable'] ) ){

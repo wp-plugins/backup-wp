@@ -4,6 +4,8 @@
         public static function get_history(){
 
             global $wpdb;
+			$options = Sns_Option::get_options();
+			$limitBackups = $options[Sns_Option::COUNT]->value;
             $table = SNS_DB_PREFIX.'backups';
             $history = $wpdb->get_results( "SELECT
                                                 `id`,
@@ -13,7 +15,8 @@
                                                 `hash`,
                                                 `filename`
                                             FROM {$table}
-                                            ORDER BY `backup_date` DESC"
+                                            ORDER BY `backup_date` DESC
+											LIMIT $limitBackups"
                                           , OBJECT_K );
             return $history;
 
@@ -203,8 +206,25 @@
             return true;
 
         }
-
+		public static function saveExternalZip() {
+			$externalFolders = scandir( WP_CONTENT_DIR.SNS_DS.SNS_BACKUP_ROOT_FOLDER_NAME);
+			$get_new_hash = Sns_Backup::get_new_hash();
+			foreach ($externalFolders as $externalFolder ) {
+				  if(substr($externalFolder, 0, 4) == 'sns_') {
+						global $wpdb;
+						$externalFolder = str_replace('.zip', '',$externalFolder);
+						$table = SNS_DB_PREFIX.'backups';
+						$query = $wpdb->prepare( "SELECT  id from {$table} WHERE filename = %s",$externalFolder);
+						$fileNames = $wpdb->get_row($query);
+						if(!$fileNames) {
+							$sql = $wpdb->prepare( "INSERT INTO ". SNS_DB_PREFIX. "backups (type, info, backup_date, restore_date, hash, filename) VALUES (%s,%s,%s,%s,%s,%s)",'manual','{"options":[],"destinations":[]}', date('Y-m-d H:i:s'),'0000-00-00 00:00:00',$get_new_hash,$externalFolder);    
+							$res = $wpdb->query($sql);
+						}
+					}
+			}
+		}
         public static function draw( $only_records = false ){
+			self::saveExternalZip(); 
             $history = self::get_history();
             $state = Sns_State::get_status();
             $disabled = ( $only_records && ( $state['status'] == Sns_State::STATUS_ACTIVE ) )?' disabled="disabled" ':'';

@@ -153,6 +153,7 @@ class Sns_Ftp {
     public function draw(){
         $details = $this->get_details();
         $linked = $this->is_linked();
+		if( extension_loaded('ftp') ){
         ?>
         <span class="ftp-subtitle">FTP server details</span>
         <div class="ftp-data">
@@ -184,7 +185,7 @@ class Sns_Ftp {
                 </div>
             </form>
         </div>
-    <?php
+		<?php }
     }
 
 }

@@ -16,6 +16,9 @@
             if( !is_writable( SNS_BACKUPS_PATH ) ){
                 throw new Sns_Exception_Permission_Denied('Permission denied.Directory is not writable '.SNS_BACKUPS_PATH);
             }
+            if(!class_exists('ZipArchive')){
+                throw new Sns_Exception_Not_Found('Zip extension missing on your server.');
+            }
         }
 
         public static function checkFTP(){

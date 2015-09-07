@@ -7,16 +7,25 @@ class Sns_Backup {
     private $type; //manual or schedule
     private $hash = '';
     private $filename = '';
+	public static $zipFile = '';
 
     public function __construct( $type ){
         $this->type = $type;
+		$hash = $this->get_new_hash();
+		$now = date('Y.m.d__H_i');
+		$this->filename = 'sns_'.get_bloginfo('name').'_'.$now.'_'.$hash;
+		$this->hash = $hash;
     }
+	
+	public function getFilename(){
+		return $this->filename;
+	}
 
     public function backup(){
 
         $options = Sns_Option::get_options();
         $backupItems = array();
-        self::configureCount( $options[Sns_Option::COUNT]->value );
+       // self::configureCount( $options[Sns_Option::COUNT]->value );
         if( $options[Sns_Option::WP_CONTENT]->value == Sns_Option::SET ){
             $backupItems[Sns_Option::WP_CONTENT] = WP_CONTENT_DIR;
         }else{
@@ -30,8 +39,10 @@ class Sns_Backup {
         if( $options[Sns_Option::DB]->value == Sns_Option::SET ){
             $backupItems[Sns_Option::DB] = Sns_Option::SET;
         }
-
+		
+		$notification = new Sns_Notification();
         try{
+			@session_write_close();
             $warns = $this->backup_items( $backupItems );
 
             Sns_Log::log_msg('[SUCCEED Backup]'.PHP_EOL);
@@ -90,9 +101,16 @@ class Sns_Backup {
             }
         }
     }
+	
+	public static function delete_backup_file( $filename ){
+		$file = SNS_BACKUPS_PATH.$filename.'.zip';
+		if( is_file( $file ) ){
+			unlink( $file );
+		}
+	}
 
     public function backup_items( $items ){
-        $hash = $this->get_new_hash();
+		$hash = $this->get_new_hash();
         $filename = 'sns_'.get_bloginfo('name').'_'.date('Y.m.d__H_i').'_'.$hash;
         $dir =  SNS_BACKUPS_PATH.$filename;
 
@@ -103,6 +121,7 @@ class Sns_Backup {
 
         $zip = new Zip();
         $zip->setZipFile($dir.'.zip');
+		self::$zipFile = $zip;
 
         foreach( $items as $name => $path ){
             if( $name == Sns_Option::DB ){
@@ -113,11 +132,12 @@ class Sns_Backup {
 
                 $stream = @fopen($sql_file, 'rb');
                 if ($stream) {
-                    $zip->addLargeFile($stream, $sql_file);
+                    $zip->addLargeFile($stream, 'wp_dump.sql');
                 }
                 @unlink($sql_file);
                 continue;
             }
+			
             Sns_Log::log_action('Backup item - '.$name);
             $itemZip = new Zip();
             $itemZip->setZipFile(SNS_BACKUPS_PATH.$name.'.zip');

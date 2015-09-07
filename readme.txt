@@ -1,11 +1,11 @@
 === Backup ===
 Plugin Name: Backup
-Version: 2.7.5
+Version: 2.7.6
 Donate link: http://sygnoos.com/wpbackup/
 URI: http://sygnoos.com/wpbackup/
-Tags: backup, mysql, database, dump, db, website, duplicate, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup, full backup, transfer, save, security, webdav backup, backup pages, backup plugins, backup posts, backup plugin, recover, backup page
+Tags: backup, mysql, database, dump, db, website, duplicate, migrate, restoration, restore, automatic, automated, rollback, schedule, wordpress backup, admin, mysql backup, database backup, free backup, back up, dropbox backup, ftp backup, website backup, full backup, transfer, save, security, webdav backup, backup pages, backup plugins, backup posts, backup plugin, recover, backup page, cloud backup
 Requires at least: 3.9
-Tested up to: 4.2.3
+Tested up to: 4.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -114,6 +114,11 @@ Order our WordPress Backup Pro version [here](http://sygnoos.com/wpbackup/). You
 
 
 == Changelog ==
+
+= 2.7.6 =
+* Bug fixes.
+* Restore from FTP uploaded file
+* Backup and Restore stability improvements.
 
 = 2.7.5 =
 * Bug fixes.
