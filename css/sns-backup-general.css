@@ -1,0 +1,311 @@
+#backup-main-block *{
+    outline: none!important;
+}
+
+#backup-main-block .cb {
+    clear: both;
+}
+
+#backup-main-block .fl {
+    float: left;
+}
+
+#backup-main-block .head-title {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    margin: 25px 0 0 0;
+}
+
+#backup-main-block #backup-main-content {
+    background-color: #FFFFFF;
+    border: 2px solid #444444;
+    margin-top: 25px;
+    width: 100%;
+}
+
+#backup-main-block .menu-container {
+    float: left;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 15px;
+    width: 200px;
+}
+
+#backup-main-block .menu-item {
+    height: 30px;
+    line-height: normal;
+    clear: left;
+}
+
+#backup-main-block .menu-item a {
+    color: #8b8b8b;
+    text-decoration: none;
+}
+
+#backup-main-block .menu-container .ui-state-active a {
+    color: #444444;
+    height: 30px;
+    line-height: normal;
+}
+
+#backup-main-block .menu-block .content-block {
+    min-height: 300px;
+    padding: 20px 0 0 230px;
+}
+
+#backup-main-block .content-block .menu-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#backup-main-block .separator {
+    border-top: 2px solid #444444;
+    clear: both;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#backup-main-block .checkbox-containter .checkbox-inline {
+    width: 194px;
+}
+
+#backup-main-block .checkbox-containter .location-field {
+    width: 100%;
+}
+
+#backup-main-block .form-group select {
+    width: 100px;
+}
+
+#backup-main-block .tab-container {
+    height: 30px;
+}
+
+#backup-main-block .settings-tab-content {
+    margin-top: 20px;
+}
+
+#backup-main-block .settings-btn {
+    margin-right: 98px;
+    float: right;
+}
+
+#backup-main-block a:focus {
+    box-shadow: none;
+}
+
+#backup-main-block .h-actions{
+    width: 232px;
+}
+
+#backup-main-block .h-date{
+    width: 150px;
+}
+
+#backup-main-block {
+    margin: 0 auto;
+    width: 960px;
+}
+
+#backup-main-block .periodicity-block{
+    margin-left: 20px;
+}
+
+.snsToastBox {
+    border: 1px solid #F0C36D;
+    height: 40px;
+    left: 50%;
+    position: fixed;
+    top: 30px;
+    width: 190px;
+    background-color:#F9EDBE;
+    padding: 2px 10px;
+    z-index: 200;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.snsToastText {
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 9px;
+    text-align: center;
+}
+
+#backup-main-block .menu-content , #backup-main-block .tab-content {
+    padding-top:20px;
+}
+
+#sns-settings-email {
+    width: 300px;
+}
+#backup-main-block .upload-block{
+    float: left;
+    width: 405px;
+}
+
+#backup-main-block .pro-v-label {
+    color: #f0ad4e!important;
+    font-style: italic;
+    padding-left: 8px;
+}
+
+#backup-main-block input[type=checkbox] , input[type=radio]{
+    margin-top: 0!important;
+}
+
+#backup-main-block label.radio {
+    font-weight: normal!important;
+}
+
+#backup-main-block .external-backup-input {
+    width: 76%;
+    float: left;
+    margin-right: 5px;
+}
+
+#backup-main-block .control-label {
+    margin-top: 7px;
+}
+
+#backup-main-block .settings-item{
+    border-bottom: 2px solid #8b8b8b;
+    font-weight: bold;
+    margin: 0;
+    width: 142px;
+}
+
+#backup-main-block .settings-item-middle{
+    margin-left: 29px;
+}
+
+#backup-main-block .ui-tabs{
+    padding: 1.2em;
+}
+
+#backup-main-block .ui-tabs .ui-tabs-panel{
+    padding: 0;
+}
+
+#backup-main-block .settings-items{
+    height: 40px;
+}
+
+#backup-main-block .settings-content{
+    padding: 5px;
+}
+
+#backup-main-block .notifications-form {
+    margin-top: 16px;
+}
+
+#backup-main-block .ftp-form input , #backup-main-block .dropbox-form input {
+    width: 300px;
+}
+
+#backup-main-block .ftp-subtitle , #backup-main-block .dropbox-subtitle{
+    font-size: 16px;
+    margin-left: 15px;
+}
+
+#backup-main-block .ftp-data, #backup-main-block .dropbox-data {
+    margin-top: 15px;
+}
+
+#backup-main-block #ftp-block , #backup-main-block #dropbox-block{
+    margin-top: 20px;
+}
+
+#backup-main-block .dn {
+    display: none;
+}
+
+#backup-main-block .fr {
+    float: right;
+}
+#backup-main-block .dropbox-btns{
+    margin-top: 25px;
+    margin-left: 10px;
+}
+
+#backup-main-block #log-content{
+    height: 310px;
+    overflow: auto;
+    resize: none;
+    text-indent: 0 !important;
+    width: 100%;
+}
+
+#backup-main-block .settings-items li.ui-tabs-active {
+    padding-bottom: 0!important;
+    border-color: #444444;
+}
+#backup-main-block .settings-items li.ui-tabs-active a{
+    color: #444444;
+}
+
+#backup-main-block .settings-items .settings-item a{
+    color: #8b8b8b;
+    text-align: center;
+    width: 100%;
+}
+
+#backup-main-block .terms{
+    font-size: 0.8em;
+    margin-top: 5px;
+}
+
+#backup-main-block #notification-enable {
+    margin-top: 8px!important;
+}
+
+#backup-main-block .ui-progressbar {
+    position: relative;
+    border-radius: 4px;
+    border: 1px solid #bbbbbb;
+    margin-top:-20px;
+    margin-bottom: 10px;
+}
+#backup-main-block .progress-label {
+    position: absolute;
+    left: 50%;
+    top: 4px;
+    font-weight: bold;
+    text-shadow: 1px 1px 0 #fff;
+}
+#backup-main-block .ui-progressbar-value{
+    background-color: #357ebd;
+    margin: 0 !important;
+    background: rgba(254,254,254,1);
+    background: -moz-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 49%, rgba(219,219,219,1) 66%, rgba(226,226,226,1) 84%, rgba(226,226,226,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(254,254,254,1)), color-stop(49%, rgba(209,209,209,1)), color-stop(66%, rgba(219,219,219,1)), color-stop(84%, rgba(226,226,226,1)), color-stop(100%, rgba(226,226,226,1)));
+    background: -webkit-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 49%, rgba(219,219,219,1) 66%, rgba(226,226,226,1) 84%, rgba(226,226,226,1) 100%);
+    background: -o-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 49%, rgba(219,219,219,1) 66%, rgba(226,226,226,1) 84%, rgba(226,226,226,1) 100%);
+    background: -ms-linear-gradient(top, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 49%, rgba(219,219,219,1) 66%, rgba(226,226,226,1) 84%, rgba(226,226,226,1) 100%);
+    background: linear-gradient(to bottom, rgba(254,254,254,1) 0%, rgba(209,209,209,1) 49%, rgba(219,219,219,1) 66%, rgba(226,226,226,1) 84%, rgba(226,226,226,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#e2e2e2', GradientType=0 );
+}
+
+#backup-main-block #progressbar{
+    position: relative;
+}
+
+#backup-main-block .sns-report-block {
+    margin-top: 10px;
+}
+
+#backup-main-block #sns-rate {
+    width: 140px!important;
+    margin: 0 auto;
+}
+
+#backup-main-block #sns-review-box .modal-title {
+    text-align: center;
+}
+
+#backup-main-block #sns-review-box .modal-content {
+    width: 354px;
+    margin: 0 auto;
+}
